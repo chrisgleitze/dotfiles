@@ -8,7 +8,7 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 source "$HOME/.fzf/shell/completion.zsh"
 source "$HOME/.fzf/shell/key-bindings.zsh"
 
