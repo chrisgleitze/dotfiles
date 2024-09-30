@@ -12,7 +12,7 @@ Import-Module PSReadLine
 Import-Module PSFzf
 
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+o'
-# Alt-c for directory fuzzy finder
+# Alt-c for change directory fuzzy finder
 # Ctrl-r is for bck-i-search
 # Ctrl-s is for fwd-i-search
 
