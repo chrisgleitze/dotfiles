@@ -15,10 +15,7 @@ set bashrc to zsh
 setup ohmyzsh
 
 install tools:
-fzf
-ripgrep
-lazygit
-git
+fzf, ripgrep, lazygit, git
 
 configure git
 
