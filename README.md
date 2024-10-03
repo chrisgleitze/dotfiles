@@ -6,7 +6,7 @@ You find my Neovim config in [a separate repo](https://github.com/chrisgleitze/n
 
 ## Setting up a WSL
 
-These are not detailed instruction but rather a to-do list for when I set up a new WSL distro.
+This is not a detailed instruction but rather a to-do list for me when I set up a new WSL distro. See the [WSL folder in this repo](/WSL) for the config files I use in my Linux distros.
 
 install WSL distro
 
@@ -17,7 +17,7 @@ set bashrc to zsh
 setup ohmyzsh
 
 install tools:
-fzf, ripgrep, lazygit, git
+fzf, fd, ripgrep, git, lazygit
 
 configure git
 
