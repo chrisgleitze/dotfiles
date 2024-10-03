@@ -32,6 +32,9 @@ Set-PSReadLineKeyHandler -Chord Ctrl-e -Function EndOfLine
 # ALIASES
 Set-Alias ll ls
 Set-Alias c clear
+function .. { cd .. }
+function cdnvim { set-location "C:\Users\asus\AppData\Local\nvim" }
+function cdrepos { set-location "C:\Users\asus\Documents\Github" }
 
 # GIT ALIASES
 Set-Alias g git 
