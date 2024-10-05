@@ -1,6 +1,7 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 local mux = wezterm.mux
+local config = {}
 
 wezterm.on("gui-attached", function(domain)
 	-- maximize all displayed windows on startup
@@ -27,25 +28,28 @@ wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
 	return zoomed .. index .. tab.active_pane.title
 end)
 
--- This will hold the configuration
-local config = wezterm.config_builder()
+if wezterm.config_builder then
+	config = wezterm.config_builder()
+end
 
-config = {
-	automatically_reload_config = true,
-	enable_tab_bar = false,
-	-- window_decorations = "TITLE",
-	-- window_decorations = "RESIZE",
-	-- window_decorations = "NONE",
+config.automatically_reload_config = true
+config.enable_tab_bar = false
 
-	-- colorscheme, font (imported below from Powershell config!)
-	color_scheme = "Dracula",
-	font = wezterm.font("FiraCode Nerd Font"),
+-- colorscheme, font (imported below from Powershell config!)
+config.color_scheme = "Dracula"
+config.font = wezterm.font("FiraCode Nerd Font")
 
-	-- Set the default program to PowerShell
-	default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" },
-
-	-- Automatically load your PowerShell profile and run your config
-	default_cwd = "C:\\Users\\asus", -- Set this to your home directory,
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
+
+-- Set the default program to PowerShell
+config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" }
+
+-- Automatically load your PowerShell profile and run your config
+config.default_cwd = "C:\\Users\\asus" -- Set this to your home directory,
 
 return config
