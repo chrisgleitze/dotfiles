@@ -14,7 +14,7 @@ source "$HOME/.fzf/shell/key-bindings.zsh"
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
-eval ``keychain --eval --agents ssh id_rsa
+eval `keychain --eval --agents ssh id_rsa`
 
 source ~/.nvm/nvm.sh
 

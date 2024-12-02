@@ -16,8 +16,8 @@ set bashrc to zsh
 
 setup ohmyzsh
 
-install tools:
-fzf, fd, ripgrep, git, lazygit
+install tools:\
+fzf, fd, ripgrep, git, lazygit, nvm, npm, node
 
 configure git
 
