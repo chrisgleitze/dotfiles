@@ -27,10 +27,10 @@ install and configure tmux
 
 install LazyVim (Neovim distribution), add my config
 
-## Memo re common WSL/Ubuntu errors
+## Memo re common WSL/Ubuntu bugs
 
 Change permission for SSH key.
-Run this command, so only you can read the SSH key:
+Run this command, so only you can read your SSH key:
 chmod 600 ~/.ssh/id_rsa
 
 Error after installing LazyVim in Ubuntu WSL:
