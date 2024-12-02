@@ -26,3 +26,10 @@ setup ssh to connect to GitHub
 install and configure tmux
 
 install LazyVim (Neovim distribution), add my config
+
+## Memo re common errors
+
+Error after installing LazyVim in Ubuntu WSL:
+"No C compiler found! "cc", "gcc", "clang", "cl", "zig" are not executable."
+Quit LazyVim, run this command:
+sudo apt update && sudo apt install build-essential
