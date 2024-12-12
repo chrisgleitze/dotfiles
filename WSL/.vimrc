@@ -30,7 +30,7 @@ set hlsearch
 set scrolloff=10
 set cursorline
 
-set background=dark
+" set background=dark
 " colorscheme elflord
 
 set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175
