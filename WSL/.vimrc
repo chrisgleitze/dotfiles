@@ -42,11 +42,13 @@ set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" make sure there's no other mapping for <space>
-" set <space> as mapleader
+" make sure there's no other mapping for <space> and set <space> as mapleader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " move visual block selection up and down with Ctrl-j and Ctrl-k
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Make Y behave like C and D - copy text until end of line
+nmap <silent> Y y$
