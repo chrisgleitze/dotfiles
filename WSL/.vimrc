@@ -52,3 +52,10 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Make Y behave like C and D - copy text until end of line
 nmap <silent> Y y$
+
+" Delete all trailing whitespaces
+nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
+
+" alternative to get rid of trailing whitespaces:
+" issue autocmd on safe
+" autocmd BufWritePre * :%s/\s\+$//e
