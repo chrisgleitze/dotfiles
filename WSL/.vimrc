@@ -57,5 +57,5 @@ nmap <silent> Y y$
 nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 
 " alternative to get rid of trailing whitespaces:
-" issue autocmd on safe
+" issue autocmd on safe to del trailing whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
