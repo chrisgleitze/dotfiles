@@ -34,7 +34,7 @@ Set-Alias ll ls
 Set-Alias c clear
 function .. { cd .. }
 function cdnvim { set-location "C:\Users\asus\AppData\Local\nvim" }
-function cdrepos { set-location "C:\Users\asus\Documents\Github" }
+function cdproj { set-location "C:\Users\asus\Documents\Github" }
 
 # GIT ALIASES
 Set-Alias g git 
