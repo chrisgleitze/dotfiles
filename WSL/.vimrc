@@ -13,6 +13,25 @@ filetype indent on
 " Turn syntax highlighting on.
 syntax on
 
+" Vim in Tmux in Alacritty doesn't show the cursor how I want,
+" so I need this to fix it :/
+" https://vim.fandom.com/wiki/Configuring_the_cursor
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+    let &t_SI .= "\e[5 q" " SI = INSERT mode
+    let &t_SR .= "\e[3 q" " SR = REPLACE mode
+    let &t_EI .= "\e[1 q" " EI = NORMAL mode (ELSE)
+    " Initialize cursor shape/color on startup
+    augroup reset_cursor_shape
+    au!
+    "autocmd VimEnter * startinsert | stopinsert
+    autocmd VimEnter * normal! :startinsert :stopinsert
+    "autocmd VimEnter * :normal :startinsert :stopinsert
+    autocmd VimEnter * redraw!
+    augroup END
+
+    " Reset cursor when Vim exits:
+    autocmd VimLeave * silent !echo -ne "\e[5 q"
+
 " set absolute number for current line, relative numbers for all other lines
 set nu
 set rnu
@@ -30,10 +49,10 @@ set hlsearch
 set scrolloff=10
 set cursorline
 
-" set background=dark
+set background=dark
 " colorscheme elflord
 
-set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175
+" set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175
 " set guicursor=i-ci:ver25-blinkon175
 " set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175,i-ci:ver25-blinkon175
 
@@ -59,3 +78,9 @@ nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 " alternative to get rid of trailing whitespaces:
 " issue autocmd on safe to del trailing whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
+
+" Move around splits with <C-[hjkl]> in normal mode
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
