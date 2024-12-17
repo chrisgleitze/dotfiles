@@ -31,9 +31,9 @@ install LazyVim (Neovim distribution), add my config
 
 Change permission for SSH key.\
 Run this command, so only you can read your SSH key:\
-chmod 600 ~/.ssh/id_rsa
+`chmod 600 ~/.ssh/id_rsa`
 
 Error after installing Neovim in Ubuntu WSL:\
 "No C compiler found! "cc", "gcc", "clang", "cl", "zig" are not executable."\
 Quit Neovim, run this command:\
-sudo apt update && sudo apt install build-essential
+`sudo apt update && sudo apt install build-essential`
