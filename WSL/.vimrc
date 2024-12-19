@@ -1,3 +1,7 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic Options 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
@@ -12,6 +16,9 @@ filetype indent on
 
 " Turn syntax highlighting on.
 syntax on
+
+" faster syntax highlighting
+syntax sync minlines=256
 
 " Vim in Tmux in Alacritty doesn't show the cursor how I want,
 " so I need this to fix it :/
@@ -52,9 +59,8 @@ set cursorline
 set background=dark
 " colorscheme elflord
 
-" set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175
-" set guicursor=i-ci:ver25-blinkon175
-" set guicursor=n-v-ve-o-r-c-cr-sm:block-blinkon175,i-ci:ver25-blinkon175
+" always display status line
+set laststatus=2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -84,3 +90,27 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin Configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Statusline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set statusline=%<\ %{mode()}\ \|\ %f%m
+set statusline+=%{&paste?'\ \ \|\ PASTE\ ':'\ '}
+set statusline+=%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|\ %{&filetype}\ \|\ %l/%L\(%c\)\ 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Colors/colorscheme/etc.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Give the active window a blue background and white foreground statusline
+" hi StatusLine ctermfg=15 ctermbg=32 guifg=#FFFFFF guibg=#005FAF gui=bold cterm=bold
+" hi SignColumn ctermfg=255 ctermbg=15 guifg=#E4E4E4 guibg=#FFFFFF
