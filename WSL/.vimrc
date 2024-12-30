@@ -2,19 +2,19 @@
 " Basic Options 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disable compatibility with vi which can cause unexpected issues.
+" disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use.
+" enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
 
-" Enable plugins and load plugin for the detected file type.
+" enable plugins and load plugin for the detected file type.
 filetype plugin on
 
-" Load an indent file for the detected file type.
+" load an indent file for the detected file type.
 filetype indent on
 
-" Turn syntax highlighting on.
+" turn syntax highlighting on.
 syntax on
 
 " faster syntax highlighting
@@ -75,17 +75,17 @@ let mapleader=" "
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" Make Y behave like C and D - copy text until end of line
+" make Y behave like C and D - copy text until end of line
 nmap <silent> Y y$
-
-" Delete all trailing whitespaces
+      
+" delete all trailing whitespaces
 nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 
 " alternative to get rid of trailing whitespaces:
 " issue autocmd on safe to del trailing whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
 
-" Move around splits with <C-[hjkl]> in normal mode
+" move around splits with <C-[hjkl]> in normal mode
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -111,6 +111,6 @@ set statusline+=%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|\ %{&filetype}\ \|\ 
 " Colors/colorscheme/etc.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Give the active window a blue background and white foreground statusline
+" give the active window a blue background and white foreground statusline
 " hi StatusLine ctermfg=15 ctermbg=32 guifg=#FFFFFF guibg=#005FAF gui=bold cterm=bold
 " hi SignColumn ctermfg=255 ctermbg=15 guifg=#E4E4E4 guibg=#FFFFFF
