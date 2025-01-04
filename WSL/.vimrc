@@ -99,9 +99,6 @@ nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 " issue autocmd on safe to del trailing whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
 
-" Pipes the selected region to `jq` for formatting
-vmap <silent> <leader>jq :!cat\|jq . <CR>
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Configuration
