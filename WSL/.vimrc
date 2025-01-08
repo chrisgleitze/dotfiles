@@ -54,7 +54,7 @@ set rnu
 " creation of swapfiles and backup files
 set noswapfile
 set nobackup
-set undofile
+set noundofile
 
 " search
 set ignorecase
