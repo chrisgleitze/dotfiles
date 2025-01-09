@@ -1,7 +1,10 @@
 call plug#begin()
 
 " List your plugins here
+Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -104,6 +107,8 @@ nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 " Plugin Configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" netrw
+let g:netrw_liststyle = 3
 
 
 
