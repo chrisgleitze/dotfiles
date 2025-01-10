@@ -1,6 +1,7 @@
 call plug#begin()
 
 " List your plugins here
+
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-surround'
@@ -13,19 +14,19 @@ call plug#end()
 " Basic Options 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" disable compatibility with vi which can cause unexpected issues.
+" disable compatibility with vi which can cause unexpected issues
 set nocompatible
 
-" enable type file detection. Vim will be able to try to detect the type of file in use.
+" enable type file detection. Vim will be able to try to detect the type of file in use
 filetype on
 
-" enable plugins and load plugin for the detected file type.
+" enable plugins and load plugin for the detected file type
 filetype plugin on
 
-" load an indent file for the detected file type.
+" load an indent file for the detected file type
 filetype indent on
 
-" turn syntax highlighting on.
+" turn syntax highlighting on
 syntax on
 
 " faster syntax highlighting
