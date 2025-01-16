@@ -1,6 +1,6 @@
 call plug#begin()
 
-" List your plugins here
+" Plugins
 
 Plug 'christoomey/vim-tmux-navigator'
 
