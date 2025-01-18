@@ -37,3 +37,17 @@ Error after installing Neovim in Ubuntu WSL:\
 "No C compiler found! "cc", "gcc", "clang", "cl", "zig" are not executable."\
 Quit Neovim, run this command:\
 `sudo apt update && sudo apt install build-essential`
+
+## Windows
+
+install fzf, fd, ripgrep, git, lazygit, nvm, nodejs (which includes npm)
+
+install ohmyposh
+
+install nerdfonts via ohmyposh, select font
+
+install PSReadLine
+
+install PSFzf
+
+change paths in Powershell profile and settings.json (e.g. path in aliases and in oh-my-posh init pwsh --config)
