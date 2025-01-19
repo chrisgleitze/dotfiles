@@ -51,3 +51,7 @@ install PSReadLine
 install PSFzf
 
 change paths in Powershell profile and settings.json (e.g. path in aliases and in oh-my-posh init pwsh --config)
+
+install Alacritty
+
+in Alacritty change to WSL using Neovim in tmux ;-)
