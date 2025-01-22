@@ -3,15 +3,18 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-oh-my-posh init pwsh --config 'C:\Users\asus\AppData\Local\Programs\oh-my-posh\themes\jblab_2021_mine.omp.json' | Invoke-Expression
+if ($host.Name -eq 'ConsoleHost')
+{
+    Import-Module PSReadLine
+}
 
-# PSREADLINE
-Import-Module PSReadLine
+oh-my-posh init pwsh --config 'C:\Users\asus\AppData\Local\Programs\oh-my-posh\themes\jblab_2021_mine.omp.json' | Invoke-Expression
 
 #Fzf - FUZZY FINDER
 Import-Module PSFzf
 
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+o'
+# currently using PredictionSource (see below), so PsFzf is commented out here:
+# Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+o'
 # Alt-c for change directory fuzzy finder
 # Ctrl-r is for bck-i-search
 # Ctrl-s is for fwd-i-search
@@ -20,6 +23,15 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 function pv { fzf --preview='bat --color=always --style=numbers {}' }
 
 Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
+
+# unset Ctrl+j to use it for NextSuggestion in PredictionSource ListView
+Remove-PSReadlineKeyHandler -Chord Ctrl+j
+
+# keymaps for PSReadLineOption Prediction Source
+Set-PSReadlineKeyHandler -Key Ctrl+j -Function NextSuggestion
+Set-PSReadlineKeyHandler -Key Ctrl+k -Function PreviousSuggestion
 
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
