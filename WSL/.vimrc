@@ -32,7 +32,7 @@ syntax on
 " faster syntax highlighting
 syntax sync minlines=256
 
-" Vim in Tmux in Alacritty doesn't show the cursor how I want,
+" cursor config doesn't work properly,
 " so I need this to fix it :/
 " https://vim.fandom.com/wiki/Configuring_the_cursor
 " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
