@@ -27,6 +27,7 @@ eval `keychain --eval --agents ssh id_rsa`
 
 function pv { fzf --preview='cat {}' }
 
+alias cdf='cd $(find * -type d | fzf)'
 alias cdnvim='cd $HOME/.config/nvim'
 alias cdproj='cd $HOME/projects'
 alias bat='batcat'
