@@ -13,8 +13,7 @@ oh-my-posh init pwsh --config 'C:\Users\asus\AppData\Local\Programs\oh-my-posh\t
 #Fzf - FUZZY FINDER
 Import-Module PSFzf
 
-# currently using PredictionSource (see below), so PsFzf is commented out here:
-# Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+o'
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+o'
 # Alt-c for change directory fuzzy finder
 # Ctrl-r is for bck-i-search
 # Ctrl-s is for fwd-i-search
@@ -23,15 +22,6 @@ Import-Module PSFzf
 function pv { fzf --preview='bat --color=always --style=numbers {}' }
 
 Set-PSReadLineOption -PredictionSource History
-Set-PSReadLineOption -PredictionViewStyle ListView
-Set-PSReadLineOption -EditMode Windows
-
-# unset Ctrl+j to use it for NextSuggestion in PredictionSource ListView
-Remove-PSReadlineKeyHandler -Chord Ctrl+j
-
-# keymaps for PSReadLineOption Prediction Source
-Set-PSReadlineKeyHandler -Key Ctrl+j -Function NextSuggestion
-Set-PSReadlineKeyHandler -Key Ctrl+k -Function PreviousSuggestion
 
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
