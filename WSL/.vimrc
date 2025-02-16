@@ -89,6 +89,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" center scroll up and down
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+
 " move visual block selection up and down with Ctrl-j and Ctrl-k
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
