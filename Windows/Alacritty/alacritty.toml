@@ -24,11 +24,11 @@
 
 # import = []
 
-# live_config_reload = true | false
+# general.live_config_reload = true | false
 # Live config reload (changes require restart)
 # Default: true
 
-live_config_reload = true
+general.live_config_reload = true
 
 # ipc_socket = true | false # (unix only)
 # Offer IPC using alacritty msg
@@ -54,11 +54,11 @@ live_config_reload = true
 
 # Example:
 
-# [shell]
+# [terminal.shell]
 # program = "/bin/zsh"
 # args = ["-l"]
 
-[shell]
+[terminal.shell]
 program = 'C:\Program Files\PowerShell\7\pwsh.exe -WorkingDirectory ~'
 
 
