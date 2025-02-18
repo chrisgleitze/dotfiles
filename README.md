@@ -35,7 +35,7 @@ Run this command, so only you can read your SSH key:\
 
 Check if ssh connection to GitHub works:\
 `ssh -T git@github.com`\
-Should return "Hi {username}! You've successfully authenticated ..."\
+Should return "Hi {username}! You've successfully authenticated ..."
 
 Error "fatal: could not create work tree dir ...: permission denied" might not have anything to do with the WSL git config but that you didn't give yourself permission to write/create in your coding projects folder. So, do this:\
 `sudo chmod 777 /home/username/projects`
