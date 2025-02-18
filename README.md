@@ -33,6 +33,16 @@ Change permission for SSH key.\
 Run this command, so only you can read your SSH key:\
 `chmod 600 ~/.ssh/id_rsa`
 
+Check if ssh connection to GitHub works:\
+`ssh -T git@github.com`\
+Should return "Hi {username}! You've successfully authenticated ..."\
+
+Error "fatal: could not create work tree dir ...: permission denied" might not have anything to do with the WSL git config but that you didn't give yourself permission to write/create in your coding projects folder. So, do this:\
+`sudo chmod 777 /home/username/projects`
+
+Lazygit "Error gettign repo paths ... fatal: detected dubious ownership in repo ..."\
+Lazygit installation might be perfectly fine. It's just that the write/create permission is missing to open Lazygit. See above!\
+
 Error after installing Neovim in Ubuntu WSL:\
 "No C compiler found! "cc", "gcc", "clang", "cl", "zig" are not executable."\
 Quit Neovim, run this command:\
