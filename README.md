@@ -25,7 +25,7 @@ setup ssh to connect to GitHub
 
 install and configure tmux
 
-install LazyVim (Neovim distribution), add my config
+install Neovim, add my LazyVim config
 
 ## Memo re common WSL/Ubuntu bugs
 
