@@ -31,6 +31,11 @@ install Neovim, add my LazyVim config
 
 ## Memo re common WSL/Ubuntu bugs
 
+To get necessary permissions to work with folders (e.g. to cd, ll etc.) and files:
+`sudo chmod -R a+rwx foldername`
+`sudo chmod a+rwx filename`
+
+
 Change permission for SSH key.\
 Run this command, so only you can read your SSH key:\
 `chmod 600 ~/.ssh/id_rsa`
