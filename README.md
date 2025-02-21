@@ -19,6 +19,8 @@ setup ohmyzsh
 install tools:\
 fzf, fd, ripgrep, git, lazygit, nvm, nodejs (which includes npm), zip, unzip, keychain (checks for running ssh-agent)
 
+add completion.zsh and key-bindings.zsh scripts to .fzf/shell/
+
 configure git
 
 setup ssh to connect to GitHub
