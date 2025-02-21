@@ -24,6 +24,8 @@ add completion.zsh and key-bindings.zsh scripts to .fzf/shell/
 configure git
 
 setup ssh to connect to GitHub
+test with
+`ssh -T git@github.com`
 
 install and configure tmux
 
