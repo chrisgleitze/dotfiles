@@ -69,7 +69,7 @@ set scrolloff=10
 set cursorline
 
 set background=dark
-" colorscheme elflord
+colorscheme elflord
 
 " always display status line
 set laststatus=2
