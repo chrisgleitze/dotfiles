@@ -33,7 +33,7 @@ install Neovim, add my LazyVim config
 
 ## Memo re common WSL/Ubuntu bugs
 
-To get necessary permissions to work with folders (e.g. to cd, ll etc.) and files you might need:\
+To get necessary permissions to work with folders (e.g. to cd, ll etc.) and files, you might need these commands:\
 `sudo chmod -R a+rwx foldername`\
 `sudo chmod a+rwx filename`
 
