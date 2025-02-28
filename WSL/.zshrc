@@ -13,10 +13,8 @@ source "$HOME/.fzf/shell/completion.zsh"
 source "$HOME/.fzf/shell/key-bindings.zsh"
 
 # set tmux executable to path
-# export PATH="/usr/bin/tmux"
-
-# set tmux sessionizer to path
 export PATH="/home/chris/bin:$PATH"
+export PATH="/usr/bin/tmux:$PATH"
 
 # OLD:
 # export PATH="$PATH:/opt/nvim-linux64/bin"
@@ -27,10 +25,9 @@ export PATH="/home/chris/bin:$PATH"
 # https://stackoverflow.com/questions/64463233/how-to-use-nvim-command-if-neovim-is-installed-using-appimage
 # https://www.reddit.com/r/neovim/comments/eecbck/nvimappimage/
 
-# eval `keychain --eval --agents ssh id_rsa`
 eval `keychain --eval --agents ssh id_ed25519`
 
-# source ~/.nvm/nvm.sh
+source ~/.nvm/nvm.sh
 
 function pv { fzf --preview='cat {}' }
 
@@ -53,7 +50,6 @@ alias la='ls -A'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source ~/.nvm/nvm.sh
 
 # git aliases
 alias gb='git branch'
@@ -65,3 +61,5 @@ alias gc='git commit'
 alias gcc='git commit -m "xxx"'
 alias gco='git checkout'
 alias gpu='git push'
+
+bindkey -s ^f "source ~/bin/tmux-sessionizer.sh\n"
