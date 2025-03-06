@@ -1,13 +1,13 @@
-call plug#begin()
-
-" Plugins
-
-Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-
-call plug#end()
+" call plug#begin()
+" 
+" " Plugins
+" 
+" Plug 'christoomey/vim-tmux-navigator'
+" 
+" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-commentary'
+" 
+" call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,12 +94,19 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
 " move visual block selection up and down with Ctrl-j and Ctrl-k
+" vnoremap <C-j> :m '>+1<CR>gv=gv
+" vnoremap <C-k> :m '<-2<CR>gv=gv
+
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " make Y behave like C and D - copy text until end of line
 nmap <silent> Y y$
-      
+
 " delete all trailing whitespaces
 nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 
