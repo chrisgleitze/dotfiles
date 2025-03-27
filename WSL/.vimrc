@@ -56,6 +56,8 @@ syntax sync minlines=256
 set nu
 set rnu
 
+set linebreak
+
 " creation of swapfiles and backup files
 set noswapfile
 set nobackup
