@@ -1,14 +1,14 @@
-" call plug#begin()
-" 
-" " Plugins
-" 
+call plug#begin()
+
+
+" Plugins
+
 " Plug 'christoomey/vim-tmux-navigator'
-" 
-" Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-commentary'
-" 
-" call plug#end()
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+
+call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -125,6 +125,13 @@ nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 
 " netrw
 let g:netrw_liststyle = 3
+
+
+" fugitive.vim
+nmap <leader>gb :Git blame<CR>
+vmap <leader>go :GBrowse<CR>
+nmap <leader>gs :Git<CR>
+nmap <leader>gm :Gsplit main:%<CR>
 
 
 
