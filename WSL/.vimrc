@@ -1,6 +1,5 @@
 call plug#begin()
 
-
 " Plugins
 
 " Plug 'christoomey/vim-tmux-navigator'
@@ -85,6 +84,15 @@ set laststatus=2
 " make sure there's no other mapping for <space> and set <space> as mapleader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
+
+" go to previous, next ... buffer
+nnoremap <Leader>j :bprevious<CR>
+nnoremap <Leader>k :bnext<CR>
+nnoremap <Leader>h :bfirst<CR>
+nnoremap <Leader>l :blast<CR>
+
+" buffer list
+nnoremap <C-b> :ls<CR>:b<Space>
 
 " move around splits with <C-[hjkl]> in normal mode
 nnoremap <C-j> <C-w>j
