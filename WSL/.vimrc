@@ -1,13 +1,13 @@
 call plug#begin()
 
 " Plugins
-
-" Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -95,10 +95,10 @@ nnoremap <Leader>l :blast<CR>
 nnoremap <C-b> :ls<CR>:b<Space>
 
 " move around splits with <C-[hjkl]> in normal mode
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
 
 " center scroll up and down
 nnoremap <C-u> <C-u>zz
