@@ -24,6 +24,7 @@ export PATH="/usr/bin/tmux:$PATH"
 # NOW: installed neovim 0.10 appimage, moved nvim.appimage to /usr/local/bin/nvim
 # https://stackoverflow.com/questions/64463233/how-to-use-nvim-command-if-neovim-is-installed-using-appimage
 # https://www.reddit.com/r/neovim/comments/eecbck/nvimappimage/
+alias nvim='/usr/local/bin/nvim-linux-x86_64.appimage'
 
 eval `keychain --eval --agents ssh id_ed25519`
 
@@ -63,3 +64,4 @@ alias gco='git checkout'
 alias gpu='git push'
 
 bindkey -s ^f "source ~/bin/tmux-sessionizer.sh\n"
+. "/home/chris/.deno/env"
