@@ -32,6 +32,9 @@ source ~/.nvm/nvm.sh
 
 function pv { fzf --preview='cat {}' }
 
+# alias for findfd
+alias fd='fdfind'
+
 # cd via fzf only from current directory
 alias cdf='cd $(find * -type d | fzf)'
 
@@ -41,8 +44,8 @@ alias cdfa='cd ~ && cd $(find * -type d | fzf)'
 # cd via fzf from home directory, cdfd: cd find all incl. dotfiles
 alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
 
-alias cdnvim='cd $HOME/.config/nvim'
-alias cdproj='cd $HOME/projects'
+alias cdn='cd $HOME/.config/nvim'
+alias cdp='cd $HOME/projects'
 alias bat='batcat'
 alias c='clear'
 alias ll='ls -alF'
