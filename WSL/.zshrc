@@ -21,7 +21,7 @@ export PATH="/usr/bin/tmux:$PATH"
 # export PATH="$PATH:/.config/./nvim.appimage"
 # alias nvim="~/.config/nvim.appimage"
 
-# NOW: installed neovim 0.10 appimage, moved nvim.appimage to /usr/local/bin/nvim
+# NOW: installed neovim 0.11.* appimage, moved nvim.appimage to /usr/local/bin/nvim
 # https://stackoverflow.com/questions/64463233/how-to-use-nvim-command-if-neovim-is-installed-using-appimage
 # https://www.reddit.com/r/neovim/comments/eecbck/nvimappimage/
 alias nvim='/usr/local/bin/nvim-linux-x86_64.appimage'
@@ -30,7 +30,15 @@ eval `keychain --eval --agents ssh id_ed25519`
 
 source ~/.nvm/nvm.sh
 
-function pv { fzf --preview='cat {}' }
+# FZF
+source <(fzf --zsh)
+# export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark --preview="batcat --color=always {}""
+export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}'"
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# function pv { fzf --height 80% --layout reverse --border --preview='batcat --color=always {}' }
+function pv { fzf }
+alias ffv='vim $(fzf)'
+alias ffn='nvim $(fzf)'
 
 # alias for findfd
 alias fd='fdfind'
@@ -43,6 +51,7 @@ alias cdfa='cd ~ && cd $(find * -type d | fzf)'
 
 # cd via fzf from home directory, cdfd: cd find all incl. dotfiles
 alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
+
 
 alias cdn='cd $HOME/.config/nvim'
 alias cdp='cd $HOME/projects'
