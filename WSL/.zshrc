@@ -36,7 +36,6 @@ source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}'"
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # function pv { fzf --height 80% --layout reverse --border --preview='batcat --color=always {}' }
-function pv { fzf }
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
@@ -51,8 +50,6 @@ alias cdfa='cd ~ && cd $(find * -type d | fzf)'
 
 # cd via fzf from home directory, cdfd: cd find all incl. dotfiles
 alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
-
-
 alias cdn='cd $HOME/.config/nvim'
 alias cdp='cd $HOME/projects'
 alias bat='batcat'
