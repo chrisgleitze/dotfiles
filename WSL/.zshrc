@@ -57,6 +57,7 @@ alias c='clear'
 alias ll='ls -alF'
 alias ls='ls --color=auto'
 alias la='ls -A'
+alias lg='lazygit'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
