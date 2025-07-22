@@ -6,7 +6,7 @@ You find my Neovim config in [a separate repo](https://github.com/chrisgleitze/i
 
 ## Setting up a WSL
 
-This is not a detailed instruction but rather a to-do list for me when I set up a new WSL distro. See the [WSL folder in this repo](/WSL) for the config files I use in my Linux distros.
+This is not a detailed instruction but rather a to-do list for me when I set up a new WSL distro. See the [WSL folder](/WSL) for the config files I use in my Linux distros.
 
 install WSL distro
 
