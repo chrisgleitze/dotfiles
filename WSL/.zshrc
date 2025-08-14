@@ -74,5 +74,11 @@ alias gcc='git commit -m "xxx"'
 alias gco='git checkout'
 alias gpu='git push'
 
-bindkey -s ^f "source ~/bin/tmux-sessionizer.sh\n"
+# git push
+alias push='~/.local/scripts/git-push.sh'
+# git push fast
+alias pushf='~/.local/scripts/git-push-fast.sh'
+
+bindkey -s ^f "source ~/.local/bin/tmux-sessionizer.sh\n"
+
 . "/home/chris/.deno/env"
