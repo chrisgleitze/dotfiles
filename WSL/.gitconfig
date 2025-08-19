@@ -1,0 +1,22 @@
+[user]
+	; email = 
+	; name = 
+[push]
+	autoSetupRemote = true
+	default = current
+[core]
+	editor = nvim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+	navigate = true  # with n and N
+	dark = true
+	line-numbers = true
+[merge]
+    conflictStyle = zdiff3
+[alias]
+	lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+
+	; one liner
+	og = log --pretty=oneline --graph --abbrev-commit
