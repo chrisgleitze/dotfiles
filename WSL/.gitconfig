@@ -13,6 +13,7 @@
 	navigate = true  # with n and N
 	dark = true
 	line-numbers = true
+	; side-by-side = true
 [merge]
     conflictStyle = zdiff3
 [alias]
