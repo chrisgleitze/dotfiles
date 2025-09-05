@@ -50,9 +50,15 @@ alias cdfa='cd ~ && cd $(find * -type d | fzf)'
 
 # cd via fzf from home directory, cdfd: cd find all incl. dotfiles
 alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
+
+# cd
 alias cdn='cd $HOME/.config/nvim'
 alias cdnvim='cd $HOME/.config/nvim'
 alias cdp='cd $HOME/projects'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias x='exit'
+
 alias bat='batcat'
 alias c='clear'
 alias ll='ls -alF'
@@ -64,21 +70,22 @@ alias vdir='vdir --color=auto'
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # git aliases
-alias gb='git branch'
-alias gl='git log'
-alias gs='git status'
-alias ga='git add .'
-alias gaa='git add --all'
-alias gc='git commit'
-alias gcc='git commit -m "xxx"'
-alias gco='git checkout'
-alias gpu='git push'
+# alias gb='git branch'
+# alias gl='git log'
+# alias gs='git status'
+# alias ga='git add .'
+# alias gaa='git add --all'
+# alias gc='git commit'
+# alias gcc='git commit -m "xxx"'
+# alias gco='git checkout'
+# alias gpu='git push'
 
 # git push
 alias push='~/.local/scripts/git-push.sh'
 # git push fast
 alias pushf='~/.local/scripts/git-push-fast.sh'
 
+# keybind to start tmux-sessionizer
 bindkey -s ^f "source ~/.local/bin/tmux-sessionizer.sh\n"
 
 . "/home/chris/.deno/env"
