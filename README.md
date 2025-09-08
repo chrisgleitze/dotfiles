@@ -17,7 +17,7 @@ set bashrc to zsh
 setup ohmyzsh
 
 install tools:\
-fzf, fd, ripgrep, git, lazygit, nvm, nodejs (which includes npm), zip, unzip, keychain (checks for running ssh-agent), dandavison/delta (improved, custom syntax highlighting for git diffs)
+fzf, fd, ripgrep, git, lazygit, nvm, nodejs (which includes npm), zip, unzip, keychain (checks for running ssh-agent), ranger (Vim-inspired file manager for the console), dandavison/delta (improved, custom syntax highlighting for git diffs)
 
 add completion.zsh and key-bindings.zsh scripts to .fzf/shell/
 
