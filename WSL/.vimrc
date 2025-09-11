@@ -1,13 +1,12 @@
 call plug#begin()
 
 " Plugins
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -56,6 +55,7 @@ set nu
 set rnu
 
 set linebreak
+set mouse=a
 
 " creation of swapfiles and backup files
 set noswapfile
@@ -68,10 +68,9 @@ set incsearch
 set hlsearch
 
 set scrolloff=10
-set cursorline
+" set cursorline
 
-set background=dark
-colorscheme elflord
+colorscheme slate
 
 " always display status line
 set laststatus=2
@@ -133,7 +132,6 @@ nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
 
 " netrw
 let g:netrw_liststyle = 3
-
 
 " fugitive.vim
 nmap <leader>gb :Git blame<CR>
