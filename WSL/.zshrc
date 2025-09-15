@@ -39,6 +39,9 @@ export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batca
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
+# ranger
+alias r="pipx run --spec ranger-fm ranger"
+
 # alias for findfd
 alias fd='fdfind'
 
@@ -55,6 +58,7 @@ alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
 alias cdn='cd $HOME/.config/nvim'
 alias cdnvim='cd $HOME/.config/nvim'
 alias cdp='cd $HOME/projects'
+alias ..='cd ..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias x='exit'
@@ -86,6 +90,10 @@ alias push='~/.local/scripts/git-push.sh'
 alias pushf='~/.local/scripts/git-push-fast.sh'
 
 # keybind to start tmux-sessionizer
-bindkey -s ^f "source ~/.local/bin/tmux-sessionizer.sh\n"
+# bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
+bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
 
 . "/home/chris/.deno/env"
+
+# Created by `pipx` on 2025-09-07 15:35:44
+export PATH="$PATH:/home/chris/.local/bin"
