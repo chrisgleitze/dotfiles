@@ -84,6 +84,11 @@ set laststatus=2
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" quit Vim quickly
+nnoremap <Leader>Q :wqa!<CR>
+nnoremap <Leader>W :w<CR>
+nnoremap <Leader>S :source<CR>
+
 " go to previous, next ... buffer
 nnoremap <Leader>j :bprevious<CR>
 nnoremap <Leader>k :bnext<CR>
