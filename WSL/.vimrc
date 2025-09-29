@@ -10,7 +10,7 @@ call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Basic Options 
+" Basic Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " disable compatibility with vi which can cause unexpected issues
@@ -89,6 +89,12 @@ nnoremap <Leader>Q :wqa!<CR>
 nnoremap <Leader>W :w<CR>
 nnoremap <Leader>S :source<CR>
 
+" make Y behave like C and D - copy text until end of line
+nmap <silent> Y yg_
+
+" delete all trailing whitespaces
+nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
+
 " go to previous, next ... buffer
 nnoremap <Leader>j :bprevious<CR>
 nnoremap <Leader>k :bnext<CR>
@@ -120,12 +126,6 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" make Y behave like C and D - copy text until end of line
-nmap <silent> Y y$
-
-" delete all trailing whitespaces
-nmap <silent> <leader>tw :%s/\s\+$//<CR>:let @/=''<CR>``
-
 " alternative to get rid of trailing whitespaces:
 " issue autocmd on safe to del trailing whitespace
 " autocmd BufWritePre * :%s/\s\+$//e
@@ -152,7 +152,7 @@ nmap <leader>gm :Gsplit main:%<CR>
 
 set statusline=%<\ %{mode()}\ \|\ %f%m
 set statusline+=%{&paste?'\ \ \|\ PASTE\ ':'\ '}
-set statusline+=%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|\ %{&filetype}\ \|\ %l/%L\(%c\)\ 
+set statusline+=%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|\ %{&filetype}\ \|\ %l/%L\(%c\)\
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
