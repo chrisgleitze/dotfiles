@@ -29,7 +29,7 @@ test with
 
 install and configure tmux
 
-install Neovim, add my LazyVim config
+install Neovim
 
 ## Memo re common WSL/Ubuntu bugs
 
