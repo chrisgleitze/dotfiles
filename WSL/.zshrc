@@ -14,7 +14,7 @@ fi
 # load SSH ID
 eval `keychain --eval --agents ssh id_ed25519`
 
-# Oh My ZSH, framework to maange zsh config
+# Oh My ZSH, framework to manage zsh config
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(
