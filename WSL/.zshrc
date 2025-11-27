@@ -1,41 +1,57 @@
+# for better zsh startup time
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
+
+# Smarter completion initialization, improves zsh startup time
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
+
+# load SSH ID
+eval `keychain --eval --agents ssh id_ed25519`
+
+# Oh My ZSH, framework to maange zsh config
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="robbyrussell"
-
 plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 )
-
 source "$ZSH/oh-my-zsh.sh"
 source "$HOME/.fzf/shell/completion.zsh"
 source "$HOME/.fzf/shell/key-bindings.zsh"
+
+# improves zsh startup time
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # set tmux executable to path
 export PATH="/home/chris/bin:$PATH"
 export PATH="/usr/bin/tmux:$PATH"
 
-# OLD:
-# export PATH="$PATH:/opt/nvim-linux64/bin"
-# export PATH="$PATH:/.config/./nvim.appimage"
-# alias nvim="~/.config/nvim.appimage"
-
-# NOW: installed neovim 0.11.* appimage, moved nvim.appimage to /usr/local/bin/nvim
-# https://stackoverflow.com/questions/64463233/how-to-use-nvim-command-if-neovim-is-installed-using-appimage
-# https://www.reddit.com/r/neovim/comments/eecbck/nvimappimage/
-alias nvim='/usr/local/bin/nvim-linux-x86_64.appimage'
-
-eval `keychain --eval --agents ssh id_ed25519`
-
+# don't load nvm on zsh startup
+nvm(){
+if [ -z "$NVM_LOADED" ]; then
 source ~/.nvm/nvm.sh
+export NVM_LOADED=1
+fi
+command nvm $@
+}
+# source ~/.nvm/nvm.sh
 
 # FZF
 source <(fzf --zsh)
 # export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark --preview="batcat --color=always {}""
 export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}'"
-# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-# function pv { fzf --height 80% --layout reverse --border --preview='batcat --color=always {}' }
+
+# ALIASES
+alias nvim='/usr/local/bin/nvim-linux-x86_64/bin/nvim'
+
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
@@ -63,6 +79,7 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias x='exit'
 
+alias srr='sudo rm -rf'
 alias bat='batcat'
 alias c='clear'
 alias ll='ls -alF'
@@ -71,7 +88,8 @@ alias la='ls -A'
 alias lg='lazygit'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# this loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # git aliases
 # alias gb='git branch'
@@ -90,7 +108,6 @@ alias push='~/.local/scripts/git-push.sh'
 alias pushf='~/.local/scripts/git-push-fast.sh'
 
 # keybind to start tmux-sessionizer
-# bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
 bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
 
 . "/home/chris/.deno/env"
