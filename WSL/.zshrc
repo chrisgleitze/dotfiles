@@ -44,6 +44,9 @@ command nvm $@
 }
 # source ~/.nvm/nvm.sh
 
+# this loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # FZF
 source <(fzf --zsh)
 # export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark --preview="batcat --color=always {}""
@@ -88,8 +91,6 @@ alias la='ls -A'
 alias lg='lazygit'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-# this loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # git aliases
 # alias gb='git branch'
