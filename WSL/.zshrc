@@ -27,7 +27,7 @@ source "$HOME/.fzf/shell/key-bindings.zsh"
 export PATH="/home/chris/bin:$PATH"
 export PATH="/usr/bin/tmux:$PATH"
 
-# don't load nvm on zsh startup, only when used for the first time
+# lazy load nvm, increases startup time
 nvm(){
 if [ -z "$NVM_LOADED" ]; then
 source ~/.nvm/nvm.sh
@@ -35,14 +35,11 @@ export NVM_LOADED=1
 fi
 command nvm $@
 }
-# source ~/.nvm/nvm.sh
 
-# this loads nvm bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # FZF
 source <(fzf --zsh)
-# export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark --preview="batcat --color=always {}""
 export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}'"
 
 # ALIASES
