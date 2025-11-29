@@ -1,10 +1,7 @@
-# for better zsh startup time
-DISABLE_AUTO_UPDATE="true"
-DISABLE_MAGIC_FUNCTIONS="true"
-DISABLE_COMPFIX="true"
-
-# Smarter completion initialization, improves zsh startup time
-autoload -Uz compinit
+# compinit is zsh completion system; improve zsh startup time:
+# rebuilding compinit on every startup is unnecessary;
+# rebuild if cached compinit is not from today, use cached if it's from today
+autoload compinit
 if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
     compinit
 else
@@ -14,27 +11,23 @@ fi
 # load SSH ID
 eval `keychain --eval --agents ssh id_ed25519`
 
-# Oh My ZSH, framework to manage zsh config
+# Oh My ZSH
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(
 	git
 	zsh-autosuggestions
-	zsh-syntax-highlighting
+	zsh-syntax-highlighting # needs to be last
 )
 source "$ZSH/oh-my-zsh.sh"
 source "$HOME/.fzf/shell/completion.zsh"
 source "$HOME/.fzf/shell/key-bindings.zsh"
 
-# improves zsh startup time
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-
 # set tmux executable to path
 export PATH="/home/chris/bin:$PATH"
 export PATH="/usr/bin/tmux:$PATH"
 
-# don't load nvm on zsh startup
+# don't load nvm on zsh startup, only when used for the first time
 nvm(){
 if [ -z "$NVM_LOADED" ]; then
 source ~/.nvm/nvm.sh
