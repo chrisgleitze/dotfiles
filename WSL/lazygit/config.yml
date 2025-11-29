@@ -1,4 +1,5 @@
 ---
+notARepository: "quit"
 gui:
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: true
