@@ -1,5 +1,5 @@
 ---
-  quitOnTopLevelReturn: true
+quitOnTopLevelReturn: true
 notARepository: "quit"
 gui:
   sidePanelWidth: 0.3333

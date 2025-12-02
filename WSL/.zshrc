@@ -27,13 +27,13 @@ source "$HOME/.fzf/shell/key-bindings.zsh"
 export PATH="/home/chris/bin:$PATH"
 export PATH="/usr/bin/tmux:$PATH"
 
-# lazy load nvm, increases startup time
+# lazy load nvm
 nvm(){
 if [ -z "$NVM_LOADED" ]; then
 source ~/.nvm/nvm.sh
 export NVM_LOADED=1
 fi
-command nvm $@
+command nvm "$@"
 }
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -105,3 +105,10 @@ bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
 
 # Created by `pipx` on 2025-09-07 15:35:44
 export PATH="$PATH:/home/chris/.local/bin"
+
+# bun completions
+[ -s "/home/chris/.bun/_bun" ] && source "/home/chris/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
