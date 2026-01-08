@@ -123,7 +123,7 @@ nnoremap <C-d> <C-d>zz
 
 " move line up and down with Ctrl-k/j
 nnoremap <A-j> :m .+1<cr>==
-nnoremap <C-k> :m .-2<cr>==
+nnoremap <A-k> :m .-2<cr>==
 inoremap <C-j> <Esc>:m .+1<cr>==gi
 inoremap <C-k> <Esc>:m .-2<cr>==gi
 vnoremap <C-j> :m '>+1<cr>gv=gv
