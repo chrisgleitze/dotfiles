@@ -1,10 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -26,51 +24,30 @@ call plug#end()
 " Basic Options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" disable compatibility with vi which can cause unexpected issues
 set nocompatible
-
-" enable type file detection
 filetype plugin indent on
-
-" turn syntax highlighting on
 syntax on
-
-" faster syntax highlighting
 syntax sync minlines=256
-
-" set guicursor=n-v-c:block-Cursor
-set guicursor=n-v-c-sm-a:block
-
-" set absolute number for current line, relative numbers for all other lines
 set nu
 set rnu
-
 set linebreak
 set mouse=a
-
-" backup
+set ignorecase
+set incsearch
+set hlsearch
+set scrolloff=10
+set termguicolors
+set laststatus=2
 set noswapfile
 set nobackup
 set undofile
+set guicursor=n-v-c-sm-a:block
+colorscheme slate
 
 if !isdirectory($HOME . "/.vim/undodir")
   call mkdir($HOME . "/.vim/undodir", "p", 0700)
 endif
 set undodir=$HOME/.vim/undodir
-
-" search
-set ignorecase
-set incsearch
-set hlsearch
-
-set scrolloff=10
-
-set termguicolors
-
-colorscheme slate
-
-" always display status line
-set laststatus=2
 
 " Statusline
 set statusline=%<\ %{mode()}\ \|\ %f%m
@@ -88,7 +65,7 @@ imap {;<cr> {<CR>};<ESC>O
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Mappings
+" Keymaps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " make sure there's no other mapping for <space> and set <space> as mapleader
@@ -131,11 +108,11 @@ vnoremap <C-k> :m '<-2<cr>gv=gv
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Configuration
+" Plugin Configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " netrw
-            let g:netrw_liststyle = 3
+let g:netrw_liststyle = 3
 
 " fugitive.vim
 nmap <leader>Gi :Git<cr>
