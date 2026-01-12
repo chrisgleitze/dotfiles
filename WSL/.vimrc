@@ -1,5 +1,10 @@
+"""""""""""
+" Plugins "
+"""""""""""
+
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -9,40 +14,68 @@ Plug 'tpope/vim-surround'
 
 " JavaScript syntax
 Plug 'yuezk/vim-js'
-" Plug 'maxmellon/vim-jsx-pretty'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'herringtondarkholme/yats.vim'
 
-" JavaScript formatting
+" Formatting
 Plug 'prettier/vim-prettier', {
 	\ 'do': 'yarn install --frozen-lockfile --production',
 	\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
 
+"""""""""""""""""
+" Basic Options "
+"""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Basic Options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" disable built-in stuff I don't use
+let g:loaded_2html_plugin = 1
+let g:loaded_gzip = 1
+let g:loaded_getscript = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_logiPat = 1
+let g:loaded_matchit = 1
+let g:loaded_matchparen = 1
+let g:loaded_rplugin = 1
+let g:loaded_rrhelper = 1
+let g:loaded_spec = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_tar = 1
+let g:loaded_tarPlugin = 1
+let g:loaded_tohtml = 1
+let g:loaded_tutor = 1
+let g:loaded_tutor_mode_plugin = 1
+let g:loaded_vimball = 1
+let g:loaded_vimballPlugin = 1
+let g:loaded_zip = 1
+let g:loaded_zipPlugin = 1
 
+set rtp^=~/.vim
 set nocompatible
 filetype plugin indent on
 syntax on
-syntax sync minlines=256
-set nu
-set rnu
+syntax sync minlines=256 " for faster syntax highlighting
+set encoding=UTF-8
+set updatetime=100
+set signcolumn=yes
+set nu rnu " absolute and relative line numbers
 set linebreak
 set mouse=a
-set ignorecase
-set incsearch
-set hlsearch
+set history=1000 " how many entries in cmdline history are saved
+set ignorecase incsearch hlsearch
 set scrolloff=10
 set termguicolors
 set laststatus=2
 set noswapfile
 set nobackup
 set undofile
+set nocursorline nocursorcolumn
 set guicursor=n-v-c-sm-a:block
 colorscheme slate
+
+" timeout on key codes, not on mappings
+set notimeout ttimeout
+set ttimeoutlen=10
 
 if !isdirectory($HOME . "/.vim/undodir")
   call mkdir($HOME . "/.vim/undodir", "p", 0700)
@@ -63,15 +96,14 @@ imap {<tab> {}<Left>
 imap {<cr> {<CR>}<ESC>O
 imap {;<cr> {<CR>};<ESC>O
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Keymaps
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""
+" Keymaps "
+"""""""""""
 
 " make sure there's no other mapping for <space> and set <space> as mapleader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-nnoremap <esc> :noh<cr><esc>
+nnoremap <esc> :nohls<cr><esc>
 
 nnoremap <Leader>Q :wqa!<cr>
 nnoremap <Leader>W :w<cr>
@@ -106,13 +138,12 @@ inoremap <C-k> <Esc>:m .-2<cr>==gi
 vnoremap <C-j> :m '>+1<cr>gv=gv
 vnoremap <C-k> :m '<-2<cr>gv=gv
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin Configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""
+" Plugin Configs "
+""""""""""""""""""
 
 " netrw
-let g:netrw_liststyle = 3
+ let g:netrw_liststyle = 3
 
 " fugitive.vim
 nmap <leader>Gi :Git<cr>
@@ -125,12 +156,15 @@ nmap <leader>gm :Gsplit main:%<cr>
 " CTRL-v	open the file in a new vertical split
 " CTRL-t	open the file in a new tab
 set rtp+=~/.fzf " set runtime path for fzf
-let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+" let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+let g:fzf_vim = {}
+let g:fzf_vim.preview_window = ['down,50%']
 
-nnoremap <leader><leader> :Files<cr>
-
-nnoremap <silent> <leader><leader> :Files<CR>
+nnoremap <silent> <leader><leader> :GFiles<cr>
+nnoremap <silent> <leader>F :Files<cr>
+nnoremap <silent> <leader>L :Lines<cr>
 nnoremap <silent> <leader>fb :Buffers<CR>
+nnoremap <silent> <leader>Ag :RG<CR>
 nnoremap <silent> <leader>Rg :Rg<CR>
 nnoremap <silent> <leader>RG :RG<CR>
 
