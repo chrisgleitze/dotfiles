@@ -27,24 +27,16 @@ source "$HOME/.fzf/shell/key-bindings.zsh"
 export PATH="/home/chris/bin:$PATH"
 export PATH="/usr/bin/tmux:$PATH"
 
-# lazy load nvm
-nvm(){
-if [ -z "$NVM_LOADED" ]; then
 source ~/.nvm/nvm.sh
-export NVM_LOADED=1
-fi
-command nvm "$@"
-}
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # FZF
-source <(fzf --zsh)
+# source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}'"
 
 # ALIASES
 alias nvim='/usr/local/bin/nvim-linux-x86_64/bin/nvim'
-
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
@@ -65,8 +57,8 @@ alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
 
 # cd
 alias cdn='cd $HOME/.config/nvim'
-alias cdnvim='cd $HOME/.config/nvim'
 alias cdp='cd $HOME/projects'
+alias cdv='cd $HOME/.vim'
 alias ..='cd ..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
@@ -85,13 +77,15 @@ alias vdir='vdir --color=auto'
 
 # git aliases
 # alias gb='git branch'
-# alias gl='git log'
-# alias gs='git status'
+alias gl='git log'
+alias gs='git status'
+alias gre='git restore .'
 # alias ga='git add .'
 # alias gaa='git add --all'
 # alias gc='git commit'
 # alias gcc='git commit -m "xxx"'
 # alias gco='git checkout'
+alias gpl='git pull'
 # alias gpu='git push'
 
 # git push
@@ -101,6 +95,7 @@ alias pushf='~/.local/scripts/git-push-fast.sh'
 
 # keybind to start tmux-sessionizer
 bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
+# bindkey -s ^F "source ~/.local/scripts/tmux-sessionizer.sh\n"
 
 . "/home/chris/.deno/env"
 
@@ -113,3 +108,5 @@ export PATH="$PATH:/home/chris/.local/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

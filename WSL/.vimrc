@@ -82,7 +82,10 @@ if !isdirectory($HOME . "/.vim/undodir")
 endif
 set undodir=$HOME/.vim/undodir
 
-" Statusline
+" autocmd to remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" statusline
 set statusline=%<\ %{mode()}\ \|\ %f%m
 set statusline+=%{&paste?'\ \ \|\ PASTE\ ':'\ '}
 set statusline+=%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|\ %{&filetype}\ \|\ %l/%L\(%c\)\
@@ -123,8 +126,8 @@ nnoremap <Leader>k :bnext<cr>
 nnoremap <Leader>h :bfirst<cr>
 nnoremap <Leader>l :blast<cr>
 
-" buffer list
-nnoremap <C-b> :ls<cr>:b<Space>
+" open buffer via buffer list
+nnoremap <C-b> :ls<cr>:b<space>
 
 " center scroll up and down
 nnoremap <C-u> <C-u>zz
@@ -143,12 +146,14 @@ vnoremap <C-k> :m '<-2<cr>gv=gv
 """"""""""""""""""
 
 " netrw
- let g:netrw_liststyle = 3
+let g:netrw_liststyle = 3
 
 " fugitive.vim
 nmap <leader>Gi :Git<cr>
-nmap <leader>gb :Git blame<cr>
-nmap <leader>gm :Gsplit main:%<cr>
+nmap <leader>Gb :Git blame<cr>
+nmap <leader>Gd :Git diff<cr>
+nmap <leader>Gl :Git log<cr>
+nmap <leader>Gs :Git show<cr>
 
 " fzf.vim
 " ENTER		open the file in the current window
@@ -156,7 +161,6 @@ nmap <leader>gm :Gsplit main:%<cr>
 " CTRL-v	open the file in a new vertical split
 " CTRL-t	open the file in a new tab
 set rtp+=~/.fzf " set runtime path for fzf
-" let g:fzf_nvim_statusline = 0 " disable statusline overwriting
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = ['down,50%']
 
