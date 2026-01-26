@@ -57,16 +57,13 @@ gui:
   showFileIcons: true
   commitHashLength: 4
   filterMode: fuzzy
-git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never
-  parseEmoji: true
-
-update:
+  git:
+    pagers:
+      - pager: delta --dark --paging=never
+        colorArg: always
+    parseEmoji: true
+  # update:
   method: never
-
-disableStartupPopups: true
-
-os:
-  editpreset: nvim
+  disableStartupPopups: true
+  os:
+    editpreset: "nvim"
