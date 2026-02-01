@@ -77,6 +77,11 @@ colorscheme slate
 set notimeout ttimeout
 set ttimeoutlen=10
 
+" command-line completion
+set wildmenu
+set wildmode=longest:full,full
+set wildoptions=pum
+
 if !isdirectory($HOME . "/.vim/undodir")
   call mkdir($HOME . "/.vim/undodir", "p", 0700)
 endif
