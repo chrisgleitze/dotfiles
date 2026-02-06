@@ -33,7 +33,14 @@ source ~/.nvm/nvm.sh
 
 # FZF
 # source <(fzf --zsh)
-export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}'"
+# export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}' --bind=alt-s:toggle"
+export FZF_DEFAULT_OPTS="--height 80% --border --preview 'batcat --style=numbers --color=always {}' --color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
+--cycle --pointer=▎ \
+--marker=▎ \
+--bind=alt-s:toggle"
+export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target"
+export FZF_CTRL_R_OPTS="--no-preview"
+export FZF_ALT_C_OPTS="--tmux 90%,80% --border --preview 'tree -C {}'"
 
 # ALIASES
 alias nvim='/usr/local/bin/nvim-linux-x86_64/bin/nvim'
@@ -47,13 +54,13 @@ alias r="pipx run --spec ranger-fm ranger"
 alias fd='fdfind'
 
 # cd via fzf only from current directory
-alias cdf='cd $(find * -type d | fzf)'
+alias cdf='cd $(find * -type d | fzf --no-preview)'
 
 # cd via fzf from home directory, cdfa: cd find all
-alias cdfa='cd ~ && cd $(find * -type d | fzf)'
+alias cdfa='cd ~ && cd $(find * -type d | fzf --no-preview)'
 
 # cd via fzf from home directory, cdfd: cd find all incl. dotfiles
-alias cdfd='cd ~ && cd $(find . -type d -print | fzf)'
+alias cdfd='cd ~ && cd $(find . -type d -print | fzf --no-preview)'
 
 # cd
 alias cdn='cd $HOME/.config/nvim'
