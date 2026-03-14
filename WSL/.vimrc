@@ -30,6 +30,7 @@ call plug#end()
 
 " disable built-in stuff I don't use
 let g:loaded_2html_plugin = 1
+let g:did_install_default_menus = 1
 let g:loaded_gzip = 1
 let g:loaded_getscript = 1
 let g:loaded_getscriptPlugin = 1
@@ -101,8 +102,8 @@ imap '<tab> ''<Left>
 imap (<tab> ()<Left>
 imap [<tab> []<Left>
 imap {<tab> {}<Left>
-imap {<cr> {<CR>}<ESC>O
-imap {;<cr> {<CR>};<ESC>O
+imap {<cr> {<CR>}<esc>O
+imap {;<cr> {<CR>};<esc>O
 
 """""""""""
 " Keymaps "
@@ -111,13 +112,13 @@ imap {;<cr> {<CR>};<ESC>O
 " make sure there's no other mapping for <space> and set <space> as mapleader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-nnoremap <esc> :nohls<cr><esc>
+noremap <esc> :nohls<cr><esc>
 
-nnoremap <Leader>Q :wqa!<cr>
-nnoremap <Leader>W :w<cr>
-nnoremap <Leader>S :source<cr>
-nnoremap <Leader>n :enew<cr>
-nnoremap <Leader>DB :bdelete<cr>
+nnoremap <leader>Q :wqa!<cr>
+nnoremap <C-s> :w<cr>
+nnoremap <leader>S :source<cr>
+nnoremap <leader>n :enew<cr>
+nnoremap <leader>DB :bdelete<cr>
 
 " make Y behave like C and D - copy text until end of line
 nmap <silent> Y yg_
@@ -126,10 +127,10 @@ nmap <silent> Y yg_
 nmap <silent> <leader>tw :%s/\s\+$//<cr>:let @/=''<CR>``
 
 " go to previous, next ... buffer
-nnoremap <Leader>j :bprevious<cr>
-nnoremap <Leader>k :bnext<cr>
-nnoremap <Leader>h :bfirst<cr>
-nnoremap <Leader>l :blast<cr>
+nnoremap <leader>j :bprevious<cr>
+nnoremap <leader>k :bnext<cr>
+nnoremap <leader>h :bfirst<cr>
+nnoremap <leader>l :blast<cr>
 
 " open buffer via buffer list
 nnoremap <C-b> :ls<cr>:b<space>
@@ -138,13 +139,13 @@ nnoremap <C-b> :ls<cr>:b<space>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
-" move line up and down with Ctrl-k/j
+" move line up and down
 nnoremap <A-j> :m .+1<cr>==
 nnoremap <A-k> :m .-2<cr>==
-inoremap <C-j> <Esc>:m .+1<cr>==gi
-inoremap <C-k> <Esc>:m .-2<cr>==gi
-vnoremap <C-j> :m '>+1<cr>gv=gv
-vnoremap <C-k> :m '<-2<cr>gv=gv
+inoremap <A-j> <esc>:m .+1<cr>==gi
+inoremap <A-k> <esc>:m .-2<cr>==gi
+vnoremap <A-j> :m '>+1<cr>gv=gv
+vnoremap <A-k> :m '<-2<cr>gv=gv
 
 """"""""""""""""""
 " Plugin Configs "
@@ -169,7 +170,7 @@ set rtp+=~/.fzf " set runtime path for fzf
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = ['down,50%']
 
-nnoremap <silent> <leader><leader> :GFiles<cr>
+ nnoremap <silent> <leader><leader> :GFiles<cr>
 nnoremap <silent> <leader>F :Files<cr>
 nnoremap <silent> <leader>L :Lines<cr>
 nnoremap <silent> <leader>fb :Buffers<CR>
