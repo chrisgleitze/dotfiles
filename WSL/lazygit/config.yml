@@ -1,11 +1,28 @@
 ---
 quitOnTopLevelReturn: true
 notARepository: "quit"
+git:
+  paging:
+    pager: delta --dark --paging=never
+    colorArg: always
+  parseEmoji: true
+os:
+  editpreset: "nvim"
 gui:
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 2
   shortTimeFormat: 14:04
+
+  showBottomLine: false
+  showFileTree: true
+  nerdFontsVersion: "3"
+  showFileIcons: true
+  commitHashLength: 4
+  filterMode: fuzzy
+  update:
+    method: never
+  disableStartupPopups: true
 
   theme:
     activeBorderColor:
@@ -26,7 +43,6 @@ gui:
       - bold
 
     # The ones with comments are still default:
-
     # Foreground color of copied commit
     cherryPickedCommitFgColor:
       - blue
@@ -51,19 +67,20 @@ gui:
     defaultFgColor:
       - default
 
-  showBottomLine: false
-  showFileTree: true
-  nerdFontsVersion: "3"
-  showFileIcons: true
-  commitHashLength: 4
-  filterMode: fuzzy
-  git:
-    pagers:
-      - pager: delta --dark --paging=never
-        colorArg: always
-    parseEmoji: true
-  # update:
-  method: never
-  disableStartupPopups: true
-  os:
-    editpreset: "nvim"
+    # activeBorderColor:
+    #   - "#fabd2f" # Gruvbox Yellow
+    #   - bold
+    # inactiveBorderColor:
+    #   - "#a89984" # Gruvbox Gray
+    # searchingActiveBorderColor:
+    #   - "#fabd2f" # Gruvbox Yellow
+    # optionsTextColor:
+    #   - "#83a598" # Gruvbox Blue
+    # selectedLineBgColor:
+    #   - "#3c3836" # Gruvbox Bg2
+    # cherryPickedCommitBgColor:
+    #   - "#d3869b" # Gruvbox Purple
+    # cherryPickedCommitFgColor:
+    #   - "#282828" # Gruvbox Bg0
+    # unstagedChangesColor:
+    #   - "#fb4934" # Gruvbox Red
