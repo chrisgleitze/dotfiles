@@ -34,18 +34,21 @@ source ~/.nvm/nvm.sh
 # FZF
 # source <(fzf --zsh)
 # export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --border --preview 'batcat --style=numbers --color=always {}' --bind=alt-s:toggle"
-export FZF_DEFAULT_OPTS="--height 80% --border --preview 'batcat --style=numbers --color=always {}' --color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
+export FZF_DEFAULT_OPTS="--height 80% --border --layout=reverse --info=hidden --preview 'batcat --style=numbers --color=always {}' --color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
 --cycle --pointer=▎ \
 --marker=▎ \
 --bind=alt-s:toggle"
 export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target"
-export FZF_CTRL_R_OPTS="--no-preview"
-export FZF_ALT_C_OPTS="--tmux 90%,80% --border --preview 'tree -C {}'"
+export FZF_CTRL_R_OPTS="--no-preview --with-nth 2.."
+export FZF_ALT_C_OPTS="--tmux 90% --border --preview 'tree -C {}'"
 
 # ALIASES
 alias nvim='/usr/local/bin/nvim-linux-x86_64/bin/nvim'
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
+
+# bash script that integrates ripgrep into fzf
+alias rfv='/home/chris/.local/scripts/rfv.sh'
 
 # ranger
 alias r="pipx run --spec ranger-fm ranger"
@@ -91,7 +94,7 @@ alias gre='git restore .'
 # alias gaa='git add --all'
 # alias gc='git commit'
 # alias gcc='git commit -m "xxx"'
-# alias gco='git checkout'
+alias gco='git checkout'
 alias gpl='git pull'
 # alias gpu='git push'
 
@@ -99,6 +102,28 @@ alias gpl='git pull'
 alias push='~/.local/scripts/git-push.sh'
 # git push fast
 alias pushf='~/.local/scripts/git-push-fast.sh'
+
+# show only commit number and message
+alias glo='git log --pretty=oneline --graph --abbrev-commit'
+
+## git aliases to investigate a code base
+## credit to Ally Piechowski:
+## https://piechowski.io/post/git-commands-before-reading-code/
+# 20 most [c]hanged files in the last year
+alias gc20='git log --format=format: --name-only --since="1 year ago" | sort | uniq -c | sort -nr | head -20'
+
+# [s]hort[l]og to see every contributor ranked by commit count
+# add e.g.:  --since="6 months ago
+alias gsl='git shortlog -sn --no-merges'
+
+# commit count by month for entire [his]tory of repo
+alias ghis='git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c'
+
+# 20 most changed files, filtered by [b]ug related keywords
+alias gb20='git log -i -E --grep="fix|bug|broken" --name-only --format='' | sort | uniq -c | sort -nr | head -20'
+
+# list of reverts, [hot]fixes etc. commits in the last year
+alias ghot='git log --oneline --since="1 year ago" | grep -iE "revert|hotfix|emergency|rollback"'
 
 # keybind to start tmux-sessionizer
 bindkey -s ^f "source ~/.local/scripts/tmux-sessionizer.sh\n"
