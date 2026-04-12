@@ -1,4 +1,4 @@
-"""""""""""
+""""""""""
 " Plugins "
 """""""""""
 
@@ -140,12 +140,12 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
 " move line up and down
-nnoremap <A-j> :m .+1<cr>==
-nnoremap <A-k> :m .-2<cr>==
-inoremap <A-j> <esc>:m .+1<cr>==gi
-inoremap <A-k> <esc>:m .-2<cr>==gi
-vnoremap <A-j> :m '>+1<cr>gv=gv
-vnoremap <A-k> :m '<-2<cr>gv=gv
+nnoremap <C-j> :m .+1<cr>==
+nnoremap <C-k> :m .-2<cr>==
+inoremap <C-j> <esc>:m .+1<cr>==gi
+inoremap <C-k> <esc>:m .-2<cr>==gi
+vnoremap <C-j> :m '>+1<cr>gv=gv
+vnoremap <C-k> :m '<-2<cr>gv=gv
 
 """"""""""""""""""
 " Plugin Configs "
