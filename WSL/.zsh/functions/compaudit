@@ -1,0 +1,5 @@
+# Skip zsh completion security auditing during shell startup. This matches the
+# intent of ZSH_DISABLE_COMPFIX and avoids the slow compaudit filesystem scan.
+compaudit() {
+	return 0
+}

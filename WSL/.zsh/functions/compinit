@@ -1,0 +1,10 @@
+# Oh My Zsh calls compinit on every startup. Force cache-only mode so zsh does
+# not rescan every completion directory unless the dump is rebuilt manually.
+local -a _codex_fpath
+_codex_fpath=($fpath)
+unfunction compinit
+fpath=(${fpath:#$HOME/.zsh/functions})
+autoload -Uz compinit
+compinit -C "$@"
+fpath=($_codex_fpath)
+unset _codex_fpath
