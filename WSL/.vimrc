@@ -59,6 +59,7 @@ syntax sync minlines=256 " for faster syntax highlighting
 set encoding=UTF-8
 set updatetime=100
 set signcolumn=yes
+set clipboard=unnamedplus
 set nu rnu " absolute and relative line numbers
 set linebreak
 set mouse=a
@@ -140,8 +141,8 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
 " move line up and down
-nnoremap <C-j> :m .+1<cr>==
-nnoremap <C-k> :m .-2<cr>==
+" nnoremap <C-j> :m .+1<cr>==
+" nnoremap <C-k> :m .-2<cr>==
 inoremap <C-j> <esc>:m .+1<cr>==gi
 inoremap <C-k> <esc>:m .-2<cr>==gi
 vnoremap <C-j> :m '>+1<cr>gv=gv
@@ -156,10 +157,14 @@ let g:netrw_liststyle = 3
 
 " fugitive.vim
 nmap <leader>Gi :Git<cr>
-nmap <leader>Gb :Git blame<cr>
-nmap <leader>Gd :Git diff<cr>
 nmap <leader>Gl :Git log<cr>
 nmap <leader>Gs :Git show<cr>
+nmap <leader>Gb :Git blame<cr>
+nmap <leader>Gl :Git log<cr>
+nmap <leader>Gd :Git diff<cr>
+nmap <leader>Gw :Gwrite<cr>
+nmap <leader>Gc :G commit<cr>
+nmap <leader>Gp :Git push<cr>
 
 " fzf.vim
 " ENTER		open the file in the current window
@@ -170,7 +175,7 @@ set rtp+=~/.fzf " set runtime path for fzf
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = ['down,50%']
 
- nnoremap <silent> <leader><leader> :GFiles<cr>
+nnoremap <silent> <leader><leader> :GFiles<cr>
 nnoremap <silent> <leader>F :Files<cr>
 nnoremap <silent> <leader>L :Lines<cr>
 nnoremap <silent> <leader>fb :Buffers<CR>
