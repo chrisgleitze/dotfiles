@@ -1,10 +1,10 @@
 # Dotfiles
 
-GNU-Stow-basierte Dotfiles für WSL/Linux.
+GNU Stow-based dotfiles for WSL/Linux.
 
-## Struktur
+## Structure
 
-Jeder Ordner im Repository ist ein Stow-Package und spiegelt Pfade relativ zu `$HOME`:
+Each directory in this repository is a Stow package and mirrors paths relative to `$HOME`:
 
 - `zsh` → `~/.zshrc`, `~/.zsh/functions/...`
 - `bash` → `~/.bashrc`
@@ -12,7 +12,7 @@ Jeder Ordner im Repository ist ein Stow-Package und spiegelt Pfade relativ zu `$
 - `git` → `~/.gitconfig`
 - `tmux` → `~/.tmux.conf`
 - `local-bin` → `~/.local/bin/nvim`
-- `scripts` → Hilfsskripte unter `~/.local/bin/`
+- `scripts` → helper scripts in `~/.local/bin/`
 - `ranger` → `~/.config/ranger/rc.conf`
 - `btop` → `~/.config/btop/btop.conf`
 - `lazygit` → `~/.config/lazygit/config.yml`
@@ -24,12 +24,12 @@ cd ~/projects/dotfiles
 stow --target="$HOME" zsh bash vim git tmux local-bin scripts ranger btop lazygit
 ```
 
-## Entfernen der Symlinks
+## Removing symlinks
 
 ```bash
 cd ~/projects/dotfiles
 stow --target="$HOME" --delete zsh bash vim git tmux local-bin scripts ranger btop lazygit
 ```
 
-Das vorherige Repository wurde nach `~/projects/dotfiles-old` verschoben.
-Die vor der Stow-Umstellung vorhandenen echten Dateien wurden in einem Backup unter `$HOME/.dotfiles-pre-stow-backup-*` gesichert.
+The previous repository was moved to `~/projects/dotfiles-old`.
+The real files that existed before the Stow migration were backed up under `$HOME/.dotfiles-pre-stow-backup-*`.
