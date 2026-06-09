@@ -32,4 +32,3 @@ stow --target="$HOME" --delete zsh bash vim git tmux local-bin scripts ranger bt
 ```
 
 The previous repository was moved to `~/projects/dotfiles-old`.
-The real files that existed before the Stow migration were backed up under `$HOME/.dotfiles-pre-stow-backup-*`.
