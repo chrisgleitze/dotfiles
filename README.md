@@ -16,19 +16,33 @@ Each directory in this repository is a Stow package and mirrors paths relative t
 - `ranger` → `~/.config/ranger/rc.conf`
 - `btop` → `~/.config/btop/btop.conf`
 - `lazygit` → `~/.config/lazygit/config.yml`
+- `nvim` → `~/.config/nvim` (Git submodule: `chrisgleitze/init.lua`)
+
+## Cloning with submodules
+
+```bash
+git clone --recurse-submodules git@github.com:chrisgleitze/dotfiles.git ~/projects/dotfiles
+```
+
+If the repository is already cloned:
+
+```bash
+cd ~/projects/dotfiles
+git submodule update --init --recursive
+```
 
 ## Installation
 
 ```bash
 cd ~/projects/dotfiles
-stow --target="$HOME" zsh bash vim git tmux local-bin scripts ranger btop lazygit
+stow --target="$HOME" zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
 ```
 
 ## Removing symlinks
 
 ```bash
 cd ~/projects/dotfiles
-stow --target="$HOME" --delete zsh bash vim git tmux local-bin scripts ranger btop lazygit
+stow --target="$HOME" --delete zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
 ```
 
 The previous repository was moved to `~/projects/dotfiles-old`.
