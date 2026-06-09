@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+NVIM_NOTTYFAST=1 exec /usr/local/bin/nvim-linux-x86_64/bin/nvim "$@"
