@@ -2,22 +2,6 @@
 
 GNU Stow-based dotfiles for WSL/Linux.
 
-## Structure
-
-Each directory in this repository is a Stow package and mirrors paths relative to `$HOME`:
-
-- `zsh` → `~/.zshrc`, `~/.zsh/functions/...`
-- `bash` → `~/.bashrc`
-- `vim` → `~/.vimrc`
-- `git` → `~/.gitconfig`
-- `tmux` → `~/.tmux.conf`
-- `local-bin` → `~/.local/bin/nvim`
-- `scripts` → helper scripts in `~/.local/bin/`
-- `ranger` → `~/.config/ranger/rc.conf`
-- `btop` → `~/.config/btop/btop.conf`
-- `lazygit` → `~/.config/lazygit/config.yml`
-- `nvim` → `~/.config/nvim` (Git submodule: `chrisgleitze/init.lua`)
-
 ## Cloning with submodules
 
 ```bash
@@ -33,8 +17,32 @@ git submodule update --init --recursive
 
 ## Installation
 
+Recommended bootstrap flow:
+
 ```bash
 cd ~/projects/dotfiles
+make bootstrap
+```
+
+With basic apt package installation first:
+
+```bash
+cd ~/projects/dotfiles
+make bootstrap-with-packages
+```
+
+The bootstrap script updates submodules and always runs `stow --simulate` before the real Stow installation.
+
+Manual Stow installation is also available:
+
+```bash
+cd ~/projects/dotfiles
+make stow
+```
+
+Equivalent direct command:
+
+```bash
 stow --target="$HOME" zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
 ```
 
@@ -42,6 +50,12 @@ stow --target="$HOME" zsh bash vim git tmux local-bin scripts ranger btop lazygi
 
 ```bash
 cd ~/projects/dotfiles
+make unstow
+```
+
+Equivalent direct command:
+
+```bash
 stow --target="$HOME" --delete zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
 ```
 
