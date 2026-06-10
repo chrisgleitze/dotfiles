@@ -10,7 +10,7 @@ export PATH="/home/chris/bin:$PATH"
 
 . "/home/chris/.deno/env"
 
-export PATH="$PATH:/home/chris/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
