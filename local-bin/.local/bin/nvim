@@ -1,2 +1,53 @@
 #!/usr/bin/env sh
-NVIM_NOTTYFAST=1 exec /usr/local/bin/nvim-linux-x86_64/bin/nvim "$@"
+
+set -eu
+
+export NVIM_NOTTYFAST=1
+
+exec_if_usable() {
+	candidate=$1
+	shift
+	[ -n "$candidate" ] || return 1
+	[ -x "$candidate" ] || return 1
+	candidate_real=$(readlink -f "$candidate" 2>/dev/null || printf '%s\n' "$candidate")
+	[ "$candidate_real" != "$self" ] || return 1
+	exec "$candidate" "$@"
+}
+
+self=$(readlink -f "$0" 2>/dev/null || printf '%s\n' "$0")
+
+if [ -n "${NVIM_BIN:-}" ]; then
+	exec "$NVIM_BIN" "$@"
+fi
+
+# Prefer a real nvim already discoverable via PATH, but skip this wrapper.
+old_ifs=$IFS
+IFS=:
+for dir in ${PATH:-}; do
+	[ -n "$dir" ] || dir=.
+	exec_if_usable "$dir/nvim" "$@" || true
+done
+IFS=$old_ifs
+
+# Portable user-local install locations. Override with NVIM_BIN or NVIM_INSTALL_DIR.
+for base in \
+	"${NVIM_INSTALL_DIR:-}" \
+	"${XDG_DATA_HOME:-$HOME/.local/share}/nvim-linux-x86_64" \
+	"$HOME/.local/opt/nvim-linux-x86_64"
+do
+	exec_if_usable "$base/bin/nvim" "$@" || true
+done
+
+# Last-resort search in configurable roots for tarball-style Neovim installs.
+# This keeps the wrapper usable without baking in a user-specific path.
+for root in ${NVIM_SEARCH_ROOTS:-$HOME/.local/opt /usr/local /opt}; do
+	[ -d "$root" ] || continue
+	candidate=$(find "$root" -maxdepth 5 -path '*/nvim-linux*/bin/nvim' -type f -perm -111 -print -quit 2>/dev/null || true)
+	exec_if_usable "$candidate" "$@" || true
+done
+
+cat >&2 <<'EOF_ERR'
+nvim wrapper: no real nvim executable found.
+Set NVIM_BIN to the desired Neovim binary or put a real nvim later in PATH.
+EOF_ERR
+exit 127

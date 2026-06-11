@@ -6,9 +6,9 @@ ZSH_DISABLE_COMPFIX="true"
 fpath=("$HOME/.zsh/functions" $fpath)
 
 # user binaries
-export PATH="/home/chris/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
-. "/home/chris/.deno/env"
+[ -r "$HOME/.deno/env" ] && . "$HOME/.deno/env"
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -83,7 +83,7 @@ alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
 # bash script that integrates ripgrep into fzf
-alias rfv='/home/chris/.local/scripts/rfv.sh'
+rfv() { "$HOME/.local/scripts/rfv.sh" "$@"; }
 
 # ranger
 alias r="pipx run --spec ranger-fm ranger"

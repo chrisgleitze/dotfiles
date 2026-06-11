@@ -5,7 +5,7 @@
 	autoSetupRemote = true
 	default = current
 [core]
-	editor = /home/chris/.local/bin/nvim
+	editor = $HOME/.local/bin/nvim
 	pager = delta
 [interactive]
     diffFilter = delta --color-only
