@@ -58,7 +58,9 @@ filetype plugin indent on
 syntax on
 syntax sync minlines=256 " for faster syntax highlighting
 set encoding=UTF-8
+set clipboard=unnamedplus
 set updatetime=100
+set autoread
 set signcolumn=yes
 set nu rnu " absolute and relative line numbers
 set linebreak
