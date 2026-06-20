@@ -80,6 +80,9 @@ set nocursorline nocursorcolumn
 set guicursor=n-v-c-sm-a:block
 colorscheme slate
 
+let g:hlput_enable = 1
+packadd hlyank
+
 " timeout on key codes, not on mappings
 set notimeout ttimeout
 set ttimeoutlen=10
