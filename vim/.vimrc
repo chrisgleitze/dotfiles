@@ -52,12 +52,9 @@ let g:loaded_vimballPlugin = 1
 let g:loaded_zip = 1
 let g:loaded_zipPlugin = 1
 
-set rtp^=~/.vim
-set nocompatible
 filetype plugin indent on
 syntax on
 syntax sync minlines=256 " for faster syntax highlighting
-set encoding=UTF-8
 set clipboard=unnamedplus
 set updatetime=100
 set autoread
@@ -69,6 +66,7 @@ set history=1000 " how many entries in cmdline history are saved
 set hidden
 set ignorecase incsearch hlsearch
 set scrolloff=10
+set scrolloffpad=1
 set termguicolors
 set laststatus=2
 set noswapfile
