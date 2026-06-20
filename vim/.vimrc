@@ -95,10 +95,20 @@ if !isdirectory($HOME . "/.vim/undodir")
 endif
 set undodir=$HOME/.vim/undodir
 
-" autocmd to remove trailing whitespace on save
+" remove trailing whitespace on save
+function! s:TrimTrailingWhitespace() abort
+  if !&modifiable || &buftype !=# ''
+    return
+  endif
+
+  let l:view = winsaveview()
+  keepjumps keeppatterns silent! %s/\s\+$//e
+  call winrestview(l:view)
+endfunction
+
 augroup vimrc_trim_trailing_whitespace
   autocmd!
-  autocmd BufWritePre * keeppatterns %s/\s\+$//e
+  autocmd BufWritePre * call <SID>TrimTrailingWhitespace()
 augroup END
 
 " statusline
