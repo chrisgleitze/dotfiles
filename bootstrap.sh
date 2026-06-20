@@ -8,20 +8,6 @@ yes=0
 install_packages=0
 skip_packages=0
 
-stow_packages=(
-  zsh
-  bash
-  vim
-  git
-  tmux
-  local-bin
-  scripts
-  ranger
-  btop
-  lazygit
-  nvim
-)
-
 apt_packages=(
   git
   stow
@@ -36,7 +22,7 @@ apt_packages=(
 
 usage() {
   cat <<USAGE
-Usage: ./bootstrap.sh [options] [stow-package ...]
+Usage: ./bootstrap.sh [options]
 
 Bootstrap this dotfiles repository on WSL/Linux.
 
@@ -48,8 +34,6 @@ Options:
       --target DIR        Stow target directory. Default: \$HOME or \$TARGET.
   -h, --help              Show this help.
 
-If stow-package arguments are supplied, only those packages are stowed.
-Default packages: ${stow_packages[*]}
 USAGE
 }
 
@@ -82,8 +66,6 @@ have() {
 }
 
 parse_args() {
-  local positional=()
-
   while (($#)); do
     case "$1" in
       -n|--dry-run)
@@ -114,22 +96,18 @@ parse_args() {
         ;;
       --)
         shift
-        positional+=("$@")
+        (($# == 0)) || die "Unexpected arguments: $*"
         break
         ;;
       -*)
         die "Unknown option: $1"
         ;;
       *)
-        positional+=("$1")
+        die "Unexpected argument: $1"
         ;;
     esac
     shift
   done
-
-  if ((${#positional[@]})); then
-    stow_packages=("${positional[@]}")
-  fi
 
   if (( install_packages && skip_packages )); then
     die "Use either --install-packages or --skip-packages, not both."
@@ -191,10 +169,14 @@ check_requirements() {
 }
 
 stow_dotfiles() {
-  local stow_args=(--dir="$repo_dir" --target="$target_dir" --verbose)
+  local stow_dir
+  local stow_package
+  stow_dir=$(dirname "$repo_dir")
+  stow_package=$(basename "$repo_dir")
+  local stow_args=(--dir="$stow_dir" --target="$target_dir" --verbose)
 
-  log "Running stow simulation for: ${stow_packages[*]}"
-  stow "${stow_args[@]}" --simulate "${stow_packages[@]}"
+  log "Running stow simulation for: $stow_package"
+  stow "${stow_args[@]}" --simulate "$stow_package"
 
   if (( dry_run )); then
     log "Dry run complete. No symlinks were changed."
@@ -204,7 +186,7 @@ stow_dotfiles() {
   confirm "Proceed with real stow installation?" || die "Stow installation cancelled."
 
   log "Running real stow installation."
-  stow "${stow_args[@]}" "${stow_packages[@]}"
+  stow "${stow_args[@]}" "$stow_package"
 }
 
 main() {
@@ -213,7 +195,7 @@ main() {
   log "Repository: $repo_dir"
   log "Target: $target_dir"
 
-  mkdir -p "$target_dir/.local/bin" "$target_dir/.config"
+  mkdir -p "$target_dir/.local/bin" "$target_dir/.local/scripts" "$target_dir/.config"
 
   install_apt_packages
   check_requirements

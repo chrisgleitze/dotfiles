@@ -43,7 +43,7 @@ make stow
 Equivalent direct command:
 
 ```bash
-stow --target="$HOME" zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
+stow --dir="$HOME/projects" --target="$HOME" dotfiles
 ```
 
 ## Removing symlinks
@@ -56,7 +56,7 @@ make unstow
 Equivalent direct command:
 
 ```bash
-stow --target="$HOME" --delete zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
+stow --dir="$HOME/projects" --target="$HOME" --delete dotfiles
 ```
 
 The previous repository was moved to `~/projects/dotfiles-old`.

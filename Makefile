@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 
 TARGET ?= $(HOME)
-STOW_PACKAGES ?= zsh bash vim git tmux local-bin scripts ranger btop lazygit nvim
+STOW_DIR := $(abspath $(CURDIR)/..)
+STOW_PACKAGE := $(notdir $(CURDIR))
 APT_PACKAGES ?= git stow curl zsh bash vim tmux ranger btop
 
 .PHONY: help bootstrap bootstrap-with-packages packages submodules stow-simulate stow unstow restow check
@@ -20,13 +21,12 @@ help:
 	@printf '%s\n' ''
 	@printf '%s\n' 'Variables:'
 	@printf '%s\n' '  TARGET=/path       Stow target directory. Default: $$HOME.'
-	@printf '%s\n' '  STOW_PACKAGES=...  Override selected Stow packages.'
 
 bootstrap:
-	./bootstrap.sh --skip-packages --yes --target "$(TARGET)" $(STOW_PACKAGES)
+	./bootstrap.sh --skip-packages --yes --target "$(TARGET)"
 
 bootstrap-with-packages:
-	./bootstrap.sh --install-packages --yes --target "$(TARGET)" $(STOW_PACKAGES)
+	./bootstrap.sh --install-packages --yes --target "$(TARGET)"
 
 packages:
 	sudo apt-get update
@@ -36,18 +36,18 @@ submodules:
 	git submodule update --init --recursive
 
 stow-simulate:
-	stow --dir=$(CURDIR) --target="$(TARGET)" --simulate --verbose $(STOW_PACKAGES)
+	stow --dir="$(STOW_DIR)" --target="$(TARGET)" --simulate --verbose "$(STOW_PACKAGE)"
 
 stow:
-	stow --dir=$(CURDIR) --target="$(TARGET)" --simulate --verbose $(STOW_PACKAGES)
-	stow --dir=$(CURDIR) --target="$(TARGET)" --verbose $(STOW_PACKAGES)
+	stow --dir="$(STOW_DIR)" --target="$(TARGET)" --simulate --verbose "$(STOW_PACKAGE)"
+	stow --dir="$(STOW_DIR)" --target="$(TARGET)" --verbose "$(STOW_PACKAGE)"
 
 unstow:
-	stow --dir=$(CURDIR) --target="$(TARGET)" --delete --verbose $(STOW_PACKAGES)
+	stow --dir="$(STOW_DIR)" --target="$(TARGET)" --delete --verbose "$(STOW_PACKAGE)"
 
 restow:
-	stow --dir=$(CURDIR) --target="$(TARGET)" --restow --verbose $(STOW_PACKAGES)
+	stow --dir="$(STOW_DIR)" --target="$(TARGET)" --restow --verbose "$(STOW_PACKAGE)"
 
 check:
 	git status --short
-	stow --dir=$(CURDIR) --target="$(TARGET)" --simulate --verbose $(STOW_PACKAGES)
+	stow --dir="$(STOW_DIR)" --target="$(TARGET)" --simulate --verbose "$(STOW_PACKAGE)"
