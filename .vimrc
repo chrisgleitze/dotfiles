@@ -20,7 +20,7 @@ Plug 'herringtondarkholme/yats.vim'
 
 " Formatting
 Plug 'prettier/vim-prettier', {
-	\ 'do': 'yarn install --frozen-lockfile --production',
+	\ 'do': 'zsh -ic ''yarn install --frozen-lockfile --production''',
 	\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
