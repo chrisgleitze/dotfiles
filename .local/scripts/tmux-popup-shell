@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+set -eu
+
+server=${TMUX_POPUP_SERVER:-popup-shell}
+session=${TMUX_POPUP_SESSION:-popup-shell}
+
+tmuxp() { env -u TMUX tmux -L "$server" "$@"; }
+
+tmuxp has -t "$session" 2>/dev/null || tmuxp new -d -s "$session" -c "$PWD"
+
+tmuxp set -g status on
+tmuxp set -g status-left ''
+tmuxp set -g status-right ''
+tmuxp set -g status-style 'bg=#222222 fg=#5eacd3'
+tmuxp set -g window-status-separator ' '
+tmuxp setw -g window-status-format '#I:#W#{?window_flags,#{window_flags}, }'
+tmuxp setw -g window-status-current-format '#I:#W#{?window_flags,#{window_flags}, }'
+
+exec env -u TMUX tmux -L "$server" attach -t "$session"
