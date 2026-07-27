@@ -88,7 +88,7 @@ set ttimeoutlen=10
 
 " command-line completion
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=noselect:longest:full,full
 set wildoptions=pum
 
 if !isdirectory($HOME . "/.vim/undodir")
