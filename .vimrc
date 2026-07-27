@@ -75,6 +75,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set undofile
 set nocursorline nocursorcolumn
 set guicursor=n-v-c-sm-a:block
+set diffopt+=linematch:60
 colorscheme slate
 
 packadd comment
