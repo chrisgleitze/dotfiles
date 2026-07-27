@@ -159,6 +159,10 @@ nnoremap <C-b> :ls<cr>:b<space>
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
+" center search results
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " move line up and down
 " nnoremap <C-j> :m .+1<cr>==
 " nnoremap <C-k> :m .-2<cr>==
