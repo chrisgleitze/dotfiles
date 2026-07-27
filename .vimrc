@@ -127,10 +127,18 @@ let mapleader=" "
 nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
 nnoremap <leader>QQ :wqa!<cr>
-nnoremap <C-s> :w<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
 nnoremap <leader>n :enew<cr>
 nnoremap <leader>DB :bdelete<cr>
+
+" keymaps to save file
+nnoremap <silent> <C-s> <Cmd>call mkdir(expand('%:p:h'), 'p')<bar>silent write<bar>echo 'buffer saved'<CR>
+inoremap <silent> <C-s> <Cmd>call mkdir(expand('%:p:h'), 'p')<bar>silent write<CR>
+xnoremap <silent> <C-s> <Cmd>call mkdir(expand('%:p:h'), 'p')<bar>silent write<CR>
+
+" jump to the end of the line in insert/command mode
+inoremap <C-l> <C-o>A
+cnoremap <C-l> <End>
 
 " make Y copy until last non-blank character of the line
 nmap <silent> Y yg_
