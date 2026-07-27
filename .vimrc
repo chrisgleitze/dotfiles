@@ -8,7 +8,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -78,6 +77,7 @@ set nocursorline nocursorcolumn
 set guicursor=n-v-c-sm-a:block
 colorscheme slate
 
+packadd comment
 let g:hlput_enable = 1
 packadd hlyank
 
