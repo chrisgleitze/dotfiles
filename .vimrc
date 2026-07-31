@@ -132,9 +132,9 @@ nnoremap <leader>n :enew<cr>
 nnoremap <leader>DB :bdelete<cr>
 
 " keymaps to save file
-nnoremap <silent> <C-s> <Cmd>call mkdir(expand('%:p:h'), 'p')<bar>silent write<bar>echo 'buffer saved'<CR>
-inoremap <silent> <C-s> <Cmd>call mkdir(expand('%:p:h'), 'p')<bar>silent write<CR>
-xnoremap <silent> <C-s> <Cmd>call mkdir(expand('%:p:h'), 'p')<bar>silent write<CR>
+nnoremap <silent> <C-s> :update<bar>echo 'buffer saved'<CR>
+inoremap <silent> <C-s> <Esc>:update<bar>echo 'buffer saved'<CR>
+xnoremap <silent> <C-s> :<C-u>update<bar>echo 'buffer saved'<CR>
 
 " jump to the end of the line in insert/command mode
 inoremap <C-l> <C-o>A
