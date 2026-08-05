@@ -132,9 +132,9 @@ nnoremap <leader>n :enew<cr>
 nnoremap <leader>DB :bdelete<cr>
 
 " keymaps to save file
-nnoremap <silent> <C-s> :update<bar>echo 'buffer saved'<CR>
-inoremap <silent> <C-s> <Esc>:update<bar>echo 'buffer saved'<CR>
-xnoremap <silent> <C-s> :<C-u>update<bar>echo 'buffer saved'<CR>
+nnoremap <silent> <C-s> :silent update<CR>
+inoremap <silent> <C-s> <Esc>:silent update<CR>
+xnoremap <silent> <C-s> :<C-u>:silent update<CR>
 
 " jump to the end of the line in insert/command mode
 inoremap <C-l> <C-o>A
