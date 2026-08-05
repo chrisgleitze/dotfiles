@@ -105,7 +105,7 @@ cdfa() {
 		cd "$HOME/$dir"
 }
 
-# cd via fzf from home directory, cdfd: cd find all incl. dotfiles
+# cd via fzf from home directory, incl. dotfiles
 cdfd() {
 	local dir
 	dir=$(cd "$HOME" && fdfind --type d --hidden --exclude .git --exclude node_modules --exclude target --exclude .venv --exclude dist --exclude build --exclude .next . | fzf --no-preview) &&
