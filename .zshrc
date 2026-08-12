@@ -82,8 +82,10 @@ export VISUAL="$EDITOR"
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
-# bash script that integrates ripgrep into fzf
+# bash scripts that integrate ripgrep into fzf
+# then open file in vim or neovim
 rfv() { "$HOME/.local/scripts/rfv.sh" "$@"; }
+rfn() { "$HOME/.local/scripts/rfn.sh" "$@"; }
 
 # ranger
 alias r="pipx run --spec ranger-fm ranger"
