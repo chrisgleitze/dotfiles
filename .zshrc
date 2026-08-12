@@ -146,7 +146,7 @@ alias gre='git restore .'
 # alias gcc='git commit -m "xxx"'
 alias gco='git checkout'
 alias gpl='git pull'
-# alias gpu='git push'
+alias gpu='git push'
 
 # git push
 alias push='_ensure_ssh_key && ~/.local/scripts/git-push.sh'
