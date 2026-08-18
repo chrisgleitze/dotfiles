@@ -54,7 +54,7 @@ let g:loaded_zipPlugin = 1
 filetype plugin indent on
 syntax on
 syntax sync minlines=256 " for faster syntax highlighting
-set clipboard=unnamedplus
+set clipboard=
 set updatetime=100
 set autoread
 set signcolumn=yes
@@ -126,6 +126,20 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 
+" WSL/Windows clipboard, without Vim's flaky X11/+clipboard path.
+" Use temp register z so normal registers and normal y/p stay Vim-internal.
+function! s:PasteFromWindowsClipboard() abort
+  let @z = system(['powershell.exe', '-NoLogo', '-NoProfile', '-Command', '[Console]::Out.Write((Get-Clipboard -Raw).ToString().Replace("`r", ""))'])
+  normal! "zp
+endfunction
+
+" Visual selection -> Windows clipboard.
+xnoremap <silent> <leader>y "zy:<C-u>call system(['clip.exe'], @z)<CR>
+" Cursor to last non-blank char of line -> Windows clipboard, like Y/yg_.
+nnoremap <silent> <leader>Y "zyg_:call system(['clip.exe'], @z)<CR>
+" Windows clipboard -> temp register z -> paste after cursor.
+nnoremap <silent> <leader>p :<C-u>call <SID>PasteFromWindowsClipboard()<CR>
+
 nnoremap <leader>QQ :wqa!<cr>
 nnoremap <leader>S :source $MYVIMRC<cr>
 nnoremap <leader>n :enew<cr>
@@ -178,7 +192,22 @@ vnoremap <C-k> :m '<-2<cr>gv=gv
 " netrw
 let g:netrw_liststyle = 3
 
-" fugitive.vim
+" vim-gitgutter
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '_'
+let g:gitgutter_sign_removed_first_line = '‾'
+let g:gitgutter_sign_modified_removed = '▎'
+
+nmap <silent> gs[ <Plug>(GitGutterPrevHunk)
+nmap <silent> gs] <Plug>(GitGutterNextHunk)
+nmap <silent> <leader>gsh <Plug>(GitGutterPreviewHunk)
+nmap <silent> <leader>gsi <Plug>(GitGutterPreviewHunk)
+nmap <silent> <leader>gss <Plug>(GitGutterStageHunk)
+xmap <silent> <leader>gss <Plug>(GitGutterStageHunk)
+nmap <silent> <leader>gsr <Plug>(GitGutterUndoHunk)
+
+" fugitive:
 nnoremap <leader>Gi :Git <cr>
 nnoremap <leader>Gl :Git log<cr>
 nnoremap <leader>Gs :Git show<cr>
@@ -187,6 +216,10 @@ nnoremap <leader>Gd :Git diff<cr>
 nnoremap <leader>Gw :Gwrite<cr>
 nnoremap <leader>Gc :G commit<cr>
 nnoremap <leader>Gp :Git push<cr>
+" [R]eset buffer, Git [b]lame whole buffer, Git blame [l]ine
+nnoremap <silent> <leader>gsR :Gread<CR>
+nnoremap <silent> <leader>gsb :Git blame<CR>
+nnoremap <silent> <leader>gsl :execute line('.') . ',' . line('.') . 'Git blame'<CR>
 
 
 " fzf.vim
