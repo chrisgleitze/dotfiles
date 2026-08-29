@@ -49,6 +49,10 @@ plugins=(
 )
 source "$ZSH/oh-my-zsh.sh"
 
+# suppress the "%" end-of-line marker
+# tmux-resurrect leaves it visible at the top of restored panes
+export PROMPT_EOL_MARK=""
+
 # load nvm on first use instead of during every shell startup
 _load_nvm() {
 	unset -f nvm node npm npx yarn pnpm corepack
