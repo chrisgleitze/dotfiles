@@ -15,36 +15,13 @@ Plug 'jiangmiao/auto-pairs'
 " Formatting
 Plug 'prettier/vim-prettier', {
 	\ 'do': 'zsh -ic ''yarn install --frozen-lockfile --production''',
-	\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+	\ 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 call plug#end()
 
 """""""""""""""""
 " Basic Options "
 """""""""""""""""
-
-" disable built-in stuff I don't use
-let g:loaded_2html_plugin = 1
-let g:did_install_default_menus = 1
-let g:loaded_gzip = 1
-let g:loaded_getscript = 1
-let g:loaded_getscriptPlugin = 1
-let g:loaded_logiPat = 1
-let g:loaded_matchit = 1
-let g:loaded_matchparen = 1
-let g:loaded_rplugin = 1
-let g:loaded_rrhelper = 1
-let g:loaded_spec = 1
-let g:loaded_spellfile_plugin = 1
-let g:loaded_tar = 1
-let g:loaded_tarPlugin = 1
-let g:loaded_tohtml = 1
-let g:loaded_tutor = 1
-let g:loaded_tutor_mode_plugin = 1
-let g:loaded_vimball = 1
-let g:loaded_vimballPlugin = 1
-let g:loaded_zip = 1
-let g:loaded_zipPlugin = 1
 
 filetype plugin indent on
 syntax on
@@ -63,7 +40,6 @@ set scrolloff=10
 set scrolloffpad=1
 set termguicolors
 set laststatus=2
-set noswapfile
 set nobackup
 set writebackup
 set backupskip=/tmp/*,/private/tmp/*
@@ -143,17 +119,14 @@ nnoremap <leader>DB :bdelete<cr>
 " keymaps to save file
 nnoremap <silent> <C-s> :silent update<CR>
 inoremap <silent> <C-s> <Esc>:silent update<CR>
-xnoremap <silent> <C-s> :<C-u>:silent update<CR>
+xnoremap <silent> <C-s> :<C-u>silent update<CR>
 
 " jump to the end of the line in insert/command mode
 inoremap <C-l> <C-o>A
 cnoremap <C-l> <End>
 
 " make Y copy until last non-blank character of the line
-nmap <silent> Y yg_
-
-" delete all trailing whitespaces
-nmap <silent> <leader>tw :%s/\s\+$//<cr>:let @/=''<CR>``
+nnoremap <silent> Y yg_
 
 " go to previous, next ... buffer
 nnoremap <leader>j :bprevious<cr>
@@ -229,7 +202,6 @@ nnoremap <silent> <leader><leader> :GFiles<cr>
 nnoremap <silent> <leader>F :Files<cr>
 nnoremap <silent> <leader>L :Lines<cr>
 nnoremap <silent> <leader>fb :Buffers<CR>
-nnoremap <silent> <leader>Ag :Ag<CR>
 nnoremap <silent> <leader>Rg :Rg<CR>
 nnoremap <silent> <leader>RG :RG<CR>
 
@@ -253,5 +225,5 @@ inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
 " prettier
 augroup vimrc_prettier
   autocmd!
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.yml,*.html Prettier
 augroup END
