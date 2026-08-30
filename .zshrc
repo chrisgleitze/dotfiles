@@ -1,10 +1,3 @@
-zstyle ':omz:update' mode disabled
-DISABLE_MAGIC_FUNCTIONS="true"
-ZSH_DISABLE_COMPFIX="true"
-
-# local wrappers speed up Oh My Zsh completion initialization
-fpath=("$HOME/.zsh/functions" $fpath)
-
 # user binaries
 export PATH="$HOME/bin:$PATH"
 
@@ -17,6 +10,13 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
+export PATH="$NVM_DIR/versions/node/v22.22.3/bin:$PATH"
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+setopt append_history inc_append_history extended_history hist_ignore_dups
+[[ -r "$HISTFILE" ]] && fc -R "$HISTFILE"
 
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -38,37 +38,37 @@ git() {
 	command git "$@"
 }
 
-# Oh My ZSH
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
-zstyle ':omz:plugins:git' aliases no
-plugins=(
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting # needs to be last
-)
-source "$ZSH/oh-my-zsh.sh"
+# zsh
+autoload -Uz compinit
+compinit -C
+setopt prompt_subst
+_git_prompt_info() {
+	local lines branch dirty
+	lines=("${(@f)$(command git status --porcelain=v1 -b 2>/dev/null)}") || return
+	[[ $lines[1] == "## "* ]] || return
+	branch=${lines[1]#\#\# }
+	branch=${branch%%...*}
+	branch=${branch%% \[*}
+	(( $#lines > 1 )) && dirty=' %F{yellow}✗%f'
+	print -r -- " %F{cyan}git:(%F{red}${branch}%F{cyan})%f$dirty"
+}
+PROMPT='%(?.%F{green}.%F{red})➜ %F{cyan}%c%f$(_git_prompt_info) '
+[ -r "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ] &&
+	source "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # suppress the "%" end-of-line marker
 # tmux-resurrect leaves it visible at the top of restored panes
 export PROMPT_EOL_MARK=""
 
-# load nvm on first use instead of during every shell startup
-_load_nvm() {
-	unset -f nvm node npm npx yarn pnpm corepack
-	[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-	[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+# load nvm only when the nvm command is used
+# node/npm are already on PATH
+nvm() {
+	unset -f nvm
+	source "$NVM_DIR/nvm.sh"
+	nvm "$@"
 }
 
-nvm() { _load_nvm; nvm "$@"; }
-node() { _load_nvm; node "$@"; }
-npm() { _load_nvm; npm "$@"; }
-npx() { _load_nvm; npx "$@"; }
-yarn() { _load_nvm; yarn "$@"; }
-pnpm() { _load_nvm; pnpm "$@"; }
-corepack() { _load_nvm; corepack "$@"; }
-
-# FZF
+# fzf
 # source <(fzf --zsh)
 export FZF_DEFAULT_OPTS="--height 80% --border --layout=reverse --info=hidden --color=fg:#f8f8f2,bg:#0e1419,hl:#e11299,fg+:#f8f8f2,bg+:#44475a,hl+:#e11299,info:#f1fa8c,prompt:#50fa7b,pointer:#ff79c6,marker:#ff79c6,spinner:#a4ffff,header:#6272a4 \
 --cycle --pointer=▎ \
@@ -78,11 +78,11 @@ export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target,.venv,dist,build,
 export FZF_CTRL_R_OPTS="--no-preview --with-nth 2.."
 export FZF_ALT_C_OPTS="--tmux 90% --border --preview 'tree -C {}'"
 
-# EDITOR
+# editor
 export EDITOR="$HOME/.local/bin/nvim"
 export VISUAL="$EDITOR"
 
-# ALIASES
+# aliases
 alias ffv='vim $(fzf)'
 alias ffn='nvim $(fzf)'
 
@@ -92,7 +92,7 @@ rfv() { "$HOME/.local/scripts/rfv.sh" "$@"; }
 rfn() { "$HOME/.local/scripts/rfn.sh" "$@"; }
 
 # ranger
-alias r="pipx run --spec ranger-fm ranger"
+alias r='ranger'
 
 # alias for findfd
 alias fd='fdfind'
@@ -189,10 +189,18 @@ if [[ -t 1 ]]; then
 fi
 # bindkey -s ^F "source ~/.local/scripts/tmux-sessionizer.sh\n"
 
+# load fzf keybindings/completion only in interactive terminals
 if [[ -t 1 ]]; then
-	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+	path+=("$HOME/.fzf/bin")
+	[ -r "$HOME/.fzf/shell/completion.zsh" ] && source "$HOME/.fzf/shell/completion.zsh"
+	[ -r "$HOME/.fzf/shell/key-bindings.zsh" ] && source "$HOME/.fzf/shell/key-bindings.zsh"
 fi
 
-# Keep command lookup lean after all shell integrations have touched PATH.
+# keep command lookup lean after all shell integrations have touched PATH
 typeset -U path PATH
-path=(${path:#/usr/bin/tmux})
+
+# must be last
+[ -r "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] &&
+	source "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
