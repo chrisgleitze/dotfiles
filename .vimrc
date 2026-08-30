@@ -12,11 +12,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
-" JavaScript syntax
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'herringtondarkholme/yats.vim'
-
 " Formatting
 Plug 'prettier/vim-prettier', {
 	\ 'do': 'zsh -ic ''yarn install --frozen-lockfile --production''',
