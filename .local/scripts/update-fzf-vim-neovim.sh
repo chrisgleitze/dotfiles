@@ -7,6 +7,7 @@ nvim_src="$HOME/src/neovim"
 vim_src="$HOME/src/vim"
 # existing nvim wrapper prefers this prefix before the /usr/local fallback
 nvim_prefix="$HOME/.local/opt/nvim-linux-x86_64"
+nvim_build_type="RelWithDebInfo"
 # ~/.local/bin/vim points at this source-built install
 vim_prefix="$HOME/.local/opt/vim-git"
 
@@ -26,7 +27,10 @@ fi
 # update master, install it where ~/.local/bin/nvim will pick it up,
 # then smoke-test startup
 git -C "$nvim_src" pull --ff-only
-make -C "$nvim_src" CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX="$nvim_prefix" install
+if [[ -f "$nvim_src/build/CMakeCache.txt" ]] && ! grep -qx "CMAKE_BUILD_TYPE:STRING=$nvim_build_type" "$nvim_src/build/CMakeCache.txt"; then
+  rm -f "$nvim_src/build/.ran-cmake"
+fi
+make -C "$nvim_src" CMAKE_BUILD_TYPE="$nvim_build_type" CMAKE_INSTALL_PREFIX="$nvim_prefix" install
 "$nvim_prefix/bin/nvim" --version | head -3
 nvim --version | head -3
 XDG_STATE_HOME=/tmp/nvim-state XDG_CACHE_HOME=/tmp/nvim-cache nvim --headless -i NONE +qa
