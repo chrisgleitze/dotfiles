@@ -1,0 +1,3 @@
+#!/bin/sh
+# started by tmux-resurrect in the restored pane's cwd; sessions.lua picks the session by cwd
+exec nvim -c 'lua require("sessions").load()'
