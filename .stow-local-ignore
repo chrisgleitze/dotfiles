@@ -6,3 +6,5 @@
 ^\.gitmodules$
 ^\.gitignore$
 ^\.stow-local-ignore$
+^TODO-neu\.md$
+^\.zshrc\.omz-backup.*$
