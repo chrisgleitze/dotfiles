@@ -22,18 +22,18 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # start keychain only when an SSH-backed command actually needs it
-_ensure_ssh_key() {
+ensure_ssh_key() {
 	if [[ -z "$SSH_AUTH_SOCK" || ! -S "$SSH_AUTH_SOCK" ]]; then
 		eval "$(keychain --quiet --eval --agents ssh id_ed25519)"
 	fi
 }
 
-ssh() { _ensure_ssh_key; command ssh "$@"; }
-scp() { _ensure_ssh_key; command scp "$@"; }
-sftp() { _ensure_ssh_key; command sftp "$@"; }
+ssh() { ensure_ssh_key; command ssh "$@"; }
+scp() { ensure_ssh_key; command scp "$@"; }
+sftp() { ensure_ssh_key; command sftp "$@"; }
 git() {
 	case "$1" in
-		clone|fetch|pull|push|submodule) _ensure_ssh_key ;;
+		clone|fetch|pull|push|submodule) ensure_ssh_key ;;
 	esac
 	command git "$@"
 }
@@ -157,9 +157,9 @@ alias gpl='git pull'
 alias gpu='git push'
 
 # git push
-alias push='_ensure_ssh_key && ~/.local/scripts/git-push.sh'
+alias push='ensure_ssh_key && ~/.local/scripts/git-push.sh'
 # git push fast
-alias pushf='_ensure_ssh_key && ~/.local/scripts/git-push-fast.sh'
+alias pushf='ensure_ssh_key && ~/.local/scripts/git-push-fast.sh'
 
 # show only commit number and message
 alias glo='git log --pretty=oneline --graph --abbrev-commit'
