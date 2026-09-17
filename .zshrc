@@ -138,6 +138,15 @@ alias ls='ls --color=auto'
 alias la='ls -A'
 alias lr='ls -R'
 alias lg='lazygit'
+alias clu='claude update'
+alias cou='curl -fsSL https://chatgpt.com/codex/install.sh | sh'
+alias piu='pi update --all'
+# update ai agents
+uaa() {
+	claude update &&
+		curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh &&
+		pi update --all
+}
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
