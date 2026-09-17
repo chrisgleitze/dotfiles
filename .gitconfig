@@ -1,6 +1,8 @@
 [user]
   email = connectingdotscoding@gmail.com
   name = Christian Gleitze
+[init]
+  defaultBranch = main
 [push]
   autoSetupRemote = true
   default = current
