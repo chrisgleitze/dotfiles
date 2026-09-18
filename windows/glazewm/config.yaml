@@ -1,0 +1,87 @@
+general:
+  startup_commands: ["set-tiling-direction horizontal"]
+  shutdown_commands: []
+  config_reload_commands: ["set-tiling-direction horizontal"]
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: false
+  cursor_jump:
+    enabled: false
+    trigger: monitor_focus
+  hide_method: cloak
+  show_all_in_taskbar: true
+
+gaps:
+  scale_with_dpi: true
+  inner_gap: 0px
+  outer_gap:
+    top: 0px
+    right: 0px
+    bottom: 0px
+    left: 0px
+
+window_effects:
+  focused_window:
+    corner_style:
+      enabled: true
+      style: square
+  other_windows:
+    corner_style:
+      enabled: true
+      style: square
+
+window_behavior:
+  # Keep the normal Windows desktop until a window is explicitly tiled with Alt+T.
+  initial_state: floating
+  state_defaults:
+    floating:
+      centered: false
+      shown_on_top: false
+    fullscreen:
+      maximized: true
+      shown_on_top: false
+
+# GlazeWM requires at least one internal workspace. No workspace switching
+# bindings are defined, so this behaves as a single-workspace setup.
+workspaces:
+  - name: main
+    keep_alive: true
+
+# Force even already-maximized windows to start floating. The rule runs once
+# when GlazeWM manages a window; Alt+T can then tile that window manually.
+window_rules:
+  - commands: ["set-floating"]
+    match:
+      - window_process: { regex: ".*" }
+
+binding_modes:
+  - name: resize
+    keybindings:
+      - commands: ["resize --width -1%"]
+        bindings: ["h", "left"]
+      - commands: ["resize --width +1%"]
+        bindings: ["l", "right"]
+      - commands: ["wm-disable-binding-mode --name resize"]
+        bindings: ["escape", "enter", "alt+r"]
+
+keybindings:
+  - commands: ["focus --direction left"]
+    bindings: ["alt+h", "alt+left"]
+  - commands: ["focus --direction right"]
+    bindings: ["alt+l", "alt+right"]
+
+  - commands: ["move --direction left"]
+    bindings: ["alt+shift+h", "alt+shift+left"]
+  - commands: ["move --direction right"]
+    bindings: ["alt+shift+l", "alt+shift+right"]
+
+  - commands: ["wm-enable-binding-mode --name resize"]
+    bindings: ["alt+r"]
+  - commands: ["toggle-tiling"]
+    bindings: ["alt+t"]
+
+  - commands: ["wm-toggle-pause"]
+    bindings: ["alt+shift+p"]
+  - commands: ["wm-reload-config"]
+    bindings: ["alt+shift+r"]
+  - commands: ["wm-exit"]
+    bindings: ["alt+shift+e"]
