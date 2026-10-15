@@ -41,6 +41,8 @@ git() {
 # zsh
 autoload -Uz compinit
 compinit -C
+zmodload zsh/complist
+zstyle ':completion:*' menu select
 setopt prompt_subst
 _git_prompt_info() {
 	local lines branch dirty
