@@ -12,7 +12,7 @@ FocusOrRun(winTitle, runTarget) {
 }
 
 F13::FocusOrRun("ahk_exe alacritty.exe", "C:\Program Files\Alacritty\alacritty.exe")
-F14::FocusOrRun("ahk_exe brave.exe", "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe")
+F14::FocusOrRun("ahk_exe chrome.exe", "C:\Program Files\Google\Chrome\Application\chrome.exe")
 F15::FocusOrRun("ahk_class CabinetWClass", "explorer.exe")
 F16::FocusOrRun("ahk_exe OUTLOOK.EXE", "C:\Program Files\Microsoft Office\root\Office16\OUTLOOK.EXE")
 F17::FocusOrRun("ahk_exe WhatsApp.exe", "explorer.exe shell:AppsFolder\5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App")
