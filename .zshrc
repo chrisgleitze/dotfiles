@@ -52,7 +52,7 @@ _git_prompt_info() {
 	branch=${branch%%...*}
 	branch=${branch%% \[*}
 	(( $#lines > 1 )) && dirty=' %F{yellow}✗%f'
-	print -r -- " %F{cyan}git:(%F{red}${branch}%F{cyan})%f$dirty"
+	print -r -- " %F{cyan}(%F{red}${branch}%F{cyan})%f$dirty"
 }
 PROMPT='%(?.%F{green}.%F{red})➜ %F{cyan}%c%f$(_git_prompt_info) '
 [ -r "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ] &&
