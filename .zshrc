@@ -40,7 +40,7 @@ git() {
 
 # zsh
 autoload -Uz compinit
-compinit -C
+compinit
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 setopt prompt_subst
