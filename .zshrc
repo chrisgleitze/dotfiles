@@ -153,7 +153,7 @@ alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
 # git aliases
-# alias gb='git branch'
+alias gb='git branch'
 alias gd='git diff'
 alias gl='git log'
 alias gs='git status'
