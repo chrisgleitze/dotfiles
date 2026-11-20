@@ -85,8 +85,9 @@ export EDITOR="$HOME/.local/bin/nvim"
 export VISUAL="$EDITOR"
 
 # aliases
-alias ffv='vim $(fzf)'
-alias ffn='nvim $(fzf)'
+unalias ffv ffn 2>/dev/null || true
+ffv() { local file; file=$(fzf) && vim -- "$file"; }
+ffn() { local file; file=$(fzf) && nvim -- "$file"; }
 
 # bash scripts that integrate ripgrep into fzf
 # then open file in vim or neovim
